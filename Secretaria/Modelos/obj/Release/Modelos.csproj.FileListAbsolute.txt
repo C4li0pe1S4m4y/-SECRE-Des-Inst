@@ -1,0 +1,5 @@
+C:\Users\user Dell\Documents\GitHub\SG\Secretaria\Modelos\bin\Release\Modelos.dll.config
+C:\Users\user Dell\Documents\GitHub\SG\Secretaria\Modelos\bin\Release\Modelos.dll
+C:\Users\user Dell\Documents\GitHub\SG\Secretaria\Modelos\bin\Release\Modelos.pdb
+C:\Users\user Dell\Documents\GitHub\SG\Secretaria\Modelos\obj\Release\Modelos.dll
+C:\Users\user Dell\Documents\GitHub\SG\Secretaria\Modelos\obj\Release\Modelos.pdb
