@@ -41,7 +41,6 @@ namespace Controladores
             drop.Items.Add("<< Elija un valor >>");
             drop.Items[0].Value = "0";
             DataTable tabla = new DataTable();
-            //string query = String.Format("select id_tipo_asistencia, nombre from dbsecretaria.sg_tipo_asistencia ; ");
             string query = String.Format("select id_tipo_asistencia, nombre "+
                 "from dbsecretaria.sg_tipo_asistencia "+
                 "where id_tipo_asistencia not in(select a.id_tipo_asistencia "+
@@ -52,8 +51,8 @@ namespace Controladores
                 "where f.id_fand = (select f.id_fand from dbsecretaria.sg_fadn f "+
                       "inner join dbsecretaria.sg_comite_ejecutivo c on f.id_fand = c.id_fadn "+
                       "inner join dbsecretaria.sg_dirigente d on d.idDirigente = c.id_dirigente "+
-                    "where d.idDirigente = {0}) "+
-                 "and a.id_asamblea = {1});",idDirigente, id_asamblea);
+                      "where d.idDirigente = {0}) "+
+                "and a.id_asamblea = {1});",idDirigente, id_asamblea);
             conectar.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
             consulta.Fill(tabla);

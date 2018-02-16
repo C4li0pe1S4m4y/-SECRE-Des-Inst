@@ -29,26 +29,6 @@ namespace secretaria.Asistencias
             if (!IsPostBack)
             {
                 actualizar();
-
-                /*modelAsamblea = new mAsamblea();
-                contAsamblea = new cAsamblea();
-                contAsistencia = new cAsistencia();
-
-                int nom = Convert.ToInt16(Request.QueryString["numero"]);
-                modelAsamblea = contAsamblea.Obtner_Asamblea(nom);
-                lblDescripcion.Text = modelAsamblea.descripcion;
-                contAsistencia.DdlTipoAsistencia(ddlTipoAsistencia);
-
-                cDirigente contDirigente = new cDirigente();
-                mDiringente modelDirigente = new mDiringente();
-                DataTable dtDirigentes = contDirigente.dtDirigentes(nom);
-                ddlAsistente.DataSource = dtDirigentes;
-                ddlAsistente.DataValueField = "idDirigente";
-                ddlAsistente.DataTextField = "dirigente";
-                
-                ddlAsistente.DataBind();
-                ddlAsistente.Items.Insert(0, new ListItem("Seleccione Asistente", "Seleccione Asistente"));
-                ddlAsistente.SelectedItem.Text = "<< Elija un valor >>";*/
             }
         }
 
@@ -295,7 +275,6 @@ namespace secretaria.Asistencias
                     lblHora.Text = modelAsamblea.final; lblHora.DataBind();
                     lblA.Visible = false; lblA.DataBind();
                     lblTA.Visible = false; lblTA.DataBind();
-                    //btFinalizarAsamblea.Visible = false; btFinalizarAsamblea.DataBind();
                     ddlAsistente.Visible = false; ddlAsistente.DataBind();
                     ddlTipoAsistencia.Visible = false; ddlTipoAsistencia.DataBind();
                     btnAgregar.Visible = false; btnAgregar.DataBind();
@@ -315,47 +294,7 @@ namespace secretaria.Asistencias
                     btnAgregar.Visible = false;
                     break;
             }
-
-
-            /*if (contAsistencia.TotalFederados(nom) >= necQuorum)
-            {
-                switch(estadoAsamblea)
-                {
-                    case 1:                       
-                        btIniciarQuorum.Visible = true; btIniciarQuorum.DataBind();
-                        btIniciarQuorumF.Visible = false; btIniciarQuorumF.DataBind();
-                        btFinalizarQuorum2.Visible = false; btFinalizarQuorum2.DataBind();
-                        break;
-
-                    case 2:
-                        btIniciarQuorum.Visible = false; btIniciarQuorum.DataBind();
-                        btIniciarQuorumF.Visible = false; btIniciarQuorumF.DataBind();
-                        btFinalizarQuorum2.Visible = true; btFinalizarQuorum2.DataBind();
-                        break;
-
-                    case 3:
-                    case 4:
-                        btIniciarQuorum.Visible = false;
-                        btIniciarQuorumF.Visible = false;
-                        btFinalizarQuorum2.Visible = false;
-                        //btFinalizarAsamblea.Visible = false;
-                        lblA.Visible = false;
-                        lblTA.Visible = false;
-                        ddlAsistente.Visible = false;
-                        ddlTipoAsistencia.Visible = false;
-                        btnAgregar.Visible = false;
-                        break;
-                }               
-                lblTotalFederados.CssClass = "label label-success";
-            }
-            else 
-            {
-                btIniciarQuorum.Visible = false;
-                //btFinalizarQuorum2.Visible = false;
-                lblTotalFederados.CssClass = "label label-danger";
-            }*/
-
-            //int nom = Convert.ToInt16(Request.QueryString["numero"]);
+            
             modelAsamblea = contAsamblea.Obtner_Asamblea(nom);
             lblDescripcion.Text = modelAsamblea.descripcion;            
 
