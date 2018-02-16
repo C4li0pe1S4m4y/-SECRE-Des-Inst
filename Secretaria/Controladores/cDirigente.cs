@@ -87,16 +87,43 @@ namespace Controladores
             return dt;
         }
 
-        public DataTable dtDirigentes()
+        public DataTable dtDirigentes(int idAsamblea)
         {
-            DataTable dt = new DataTable();
+            DataTable dtPresentes = new DataTable();
             try
             {
                 conectar = new cConexion();
                 conectar.AbrirConexion();
                 string query = string.Format("select d.idDirigente, CONCAT(d.Nombres, ' ', d.Apellidos, ' - ', ' (', f.nombre, ')') as dirigente " +
-                    "from dbsecretaria.sg_fadn f inner join dbsecretaria.sg_comite_ejecutivo c on f.id_fand = c.id_fadn inner join dbsecretaria.sg_dirigente d on c.id_dirigente = d.idDirigente inner join dbsecretaria.sg_tipo_dirigente t on d.Tipo_dirigente = t.idTipo_dirigente " +
+                    "from dbsecretaria.sg_fadn f " +
+                    "inner join dbsecretaria.sg_comite_ejecutivo c on f.id_fand = c.id_fadn " +
+                    "inner join dbsecretaria.sg_dirigente d on c.id_dirigente = d.idDirigente " +
+                    "inner join dbsecretaria.sg_tipo_dirigente t on d.Tipo_dirigente = t.idTipo_dirigente " +
                     "where d.Estado = 'activo' and t.idTipo_dirigente in(1,4) " +
+                    "and d.idDirigente not in(select idDirigente from dbsecretaria.sg_asistencia where id_asamblea = {0})" +
+                    "order by dirigente;", idAsamblea);
+                MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
+                consulta.Fill(dtPresentes);
+                conectar.CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                throw;
+            };
+            return dtPresentes;
+
+            /*DataTable dt = new DataTable();
+            try
+            {
+                conectar = new cConexion();
+                conectar.AbrirConexion();
+                string query = string.Format("select d.idDirigente, CONCAT(d.Nombres, ' ', d.Apellidos, ' - ', ' (', f.nombre, ')') as dirigente "+
+                    "from dbsecretaria.sg_fadn f "+
+                    "inner join dbsecretaria.sg_comite_ejecutivo c on f.id_fand = c.id_fadn "+
+                    "inner join dbsecretaria.sg_dirigente d on c.id_dirigente = d.idDirigente "+
+                    "inner join dbsecretaria.sg_tipo_dirigente t on d.Tipo_dirigente = t.idTipo_dirigente "+
+                    "where d.Estado = 'activo' and t.idTipo_dirigente in(1,4) "+
                     "order by dirigente;");
                 MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
                 consulta.Fill(dt);
@@ -107,7 +134,7 @@ namespace Controladores
                 string error = ex.Message;
                 throw;
             };
-            return dt;
+            return dt;*/
         }
 
 

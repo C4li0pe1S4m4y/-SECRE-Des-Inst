@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DirigentesActivos" targetNamespace="http://tempuri.org/DirigentesActivos.xsd" xmlns:mstns="http://tempuri.org/DirigentesActivos.xsd" xmlns="http://tempuri.org/DirigentesActivos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbsecretariaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbsecretariaConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbsecretariaConnectionString.ConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbsecretariaConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres, d.Estado, t.descripcion, c.Fecha_inicio, c.Fecha_final, c.Acuerdo_cej, c.Fecha_acuerdo, c.Acreditacion_cdag, c.Fecha_Acreditacion, c.no_finiquito, c.fecha_finiquito, c.acta_posesion, 
+                  c.fecha_posesion, c.fecha_recepcion, d.DPI, d.NIT
+FROM     sg_comite_ejecutivo c INNER JOIN
+                  sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN
+                  sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN
+                  sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente
+ORDER BY f.nombre, d.Tipo_dirigente</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
+              <Mapping SourceColumn="Nombres" DataSetColumn="Nombres" />
+              <Mapping SourceColumn="Fecha_inicio" DataSetColumn="Fecha_inicio" />
+              <Mapping SourceColumn="Fecha_final" DataSetColumn="Fecha_final" />
+              <Mapping SourceColumn="Acuerdo_cej" DataSetColumn="Acuerdo_cej" />
+              <Mapping SourceColumn="Fecha_acuerdo" DataSetColumn="Fecha_acuerdo" />
+              <Mapping SourceColumn="Acreditacion_cdag" DataSetColumn="Acreditacion_cdag" />
+              <Mapping SourceColumn="Fecha_Acreditacion" DataSetColumn="Fecha_Acreditacion" />
+              <Mapping SourceColumn="no_finiquito" DataSetColumn="no_finiquito" />
+              <Mapping SourceColumn="fecha_finiquito" DataSetColumn="fecha_finiquito" />
+              <Mapping SourceColumn="acta_posesion" DataSetColumn="acta_posesion" />
+              <Mapping SourceColumn="fecha_posesion" DataSetColumn="fecha_posesion" />
+              <Mapping SourceColumn="fecha_recepcion" DataSetColumn="fecha_recepcion" />
+              <Mapping SourceColumn="Nombres1" DataSetColumn="Nombres1" />
+              <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
+              <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
+              <Mapping SourceColumn="DPI" DataSetColumn="DPI" />
+              <Mapping SourceColumn="NIT" DataSetColumn="NIT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DirigentesActivos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DirigentesActivos" msprop:Generator_UserDSName="DirigentesActivos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombres" msprop:Generator_ColumnVarNameInTable="columnNombres" msprop:Generator_ColumnPropNameInRow="Nombres" msprop:Generator_ColumnPropNameInTable="NombresColumn" msprop:Generator_UserColumnName="Nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha_inicio" msprop:Generator_ColumnVarNameInTable="columnFecha_inicio" msprop:Generator_ColumnPropNameInRow="Fecha_inicio" msprop:Generator_ColumnPropNameInTable="Fecha_inicioColumn" msprop:Generator_UserColumnName="Fecha_inicio" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Fecha_final" msprop:Generator_ColumnVarNameInTable="columnFecha_final" msprop:Generator_ColumnPropNameInRow="Fecha_final" msprop:Generator_ColumnPropNameInTable="Fecha_finalColumn" msprop:Generator_UserColumnName="Fecha_final" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Acuerdo_cej" msprop:Generator_ColumnVarNameInTable="columnAcuerdo_cej" msprop:Generator_ColumnPropNameInRow="Acuerdo_cej" msprop:Generator_ColumnPropNameInTable="Acuerdo_cejColumn" msprop:Generator_UserColumnName="Acuerdo_cej">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha_acuerdo" msprop:Generator_ColumnVarNameInTable="columnFecha_acuerdo" msprop:Generator_ColumnPropNameInRow="Fecha_acuerdo" msprop:Generator_ColumnPropNameInTable="Fecha_acuerdoColumn" msprop:Generator_UserColumnName="Fecha_acuerdo" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Acreditacion_cdag" msprop:Generator_ColumnVarNameInTable="columnAcreditacion_cdag" msprop:Generator_ColumnPropNameInRow="Acreditacion_cdag" msprop:Generator_ColumnPropNameInTable="Acreditacion_cdagColumn" msprop:Generator_UserColumnName="Acreditacion_cdag">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha_Acreditacion" msprop:Generator_ColumnVarNameInTable="columnFecha_Acreditacion" msprop:Generator_ColumnPropNameInRow="Fecha_Acreditacion" msprop:Generator_ColumnPropNameInTable="Fecha_AcreditacionColumn" msprop:Generator_UserColumnName="Fecha_Acreditacion" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="no_finiquito" msprop:Generator_ColumnVarNameInTable="columnno_finiquito" msprop:Generator_ColumnPropNameInRow="no_finiquito" msprop:Generator_ColumnPropNameInTable="no_finiquitoColumn" msprop:Generator_UserColumnName="no_finiquito" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fecha_finiquito" msprop:Generator_ColumnVarNameInTable="columnfecha_finiquito" msprop:Generator_ColumnPropNameInRow="fecha_finiquito" msprop:Generator_ColumnPropNameInTable="fecha_finiquitoColumn" msprop:Generator_UserColumnName="fecha_finiquito" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="acta_posesion" msprop:Generator_ColumnVarNameInTable="columnacta_posesion" msprop:Generator_ColumnPropNameInRow="acta_posesion" msprop:Generator_ColumnPropNameInTable="acta_posesionColumn" msprop:Generator_UserColumnName="acta_posesion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fecha_posesion" msprop:Generator_ColumnVarNameInTable="columnfecha_posesion" msprop:Generator_ColumnPropNameInRow="fecha_posesion" msprop:Generator_ColumnPropNameInTable="fecha_posesionColumn" msprop:Generator_UserColumnName="fecha_posesion" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="fecha_recepcion" msprop:Generator_ColumnVarNameInTable="columnfecha_recepcion" msprop:Generator_ColumnPropNameInRow="fecha_recepcion" msprop:Generator_ColumnPropNameInTable="fecha_recepcionColumn" msprop:Generator_UserColumnName="fecha_recepcion" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Nombres1" msprop:Generator_ColumnVarNameInTable="columnNombres1" msprop:Generator_ColumnPropNameInRow="Nombres1" msprop:Generator_ColumnPropNameInTable="Nombres1Column" msprop:Generator_UserColumnName="Nombres1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="descripcion" msprop:Generator_ColumnVarNameInTable="columndescripcion" msprop:Generator_ColumnPropNameInRow="descripcion" msprop:Generator_ColumnPropNameInTable="descripcionColumn" msprop:Generator_UserColumnName="descripcion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_UserColumnName="Estado">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DPI" msprop:Generator_ColumnVarNameInTable="columnDPI" msprop:Generator_ColumnPropNameInRow="DPI" msprop:Generator_ColumnPropNameInTable="DPIColumn" msprop:Generator_UserColumnName="DPI">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NIT" msprop:Generator_ColumnVarNameInTable="columnNIT" msprop:Generator_ColumnPropNameInRow="NIT" msprop:Generator_ColumnPropNameInTable="NITColumn" msprop:Generator_UserColumnName="NIT" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
