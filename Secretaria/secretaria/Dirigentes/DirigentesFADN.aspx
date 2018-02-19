@@ -243,7 +243,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <asp:TextBox ID="tb_dpi" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                        <asp:TextBox ID="tb_dpi" runat="server" CssClass="form-control" ></asp:TextBox>
                                     </div>
                                     <div class="col-xs-6">
                                         <asp:DropDownList ID="ddl_dpto" runat="server" CssClass="form-control"></asp:DropDownList>
@@ -259,7 +259,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">
-                                        <asp:TextBox ID="tb_nit" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                        <asp:TextBox ID="tb_nit" runat="server" CssClass="form-control" ></asp:TextBox>
                                     </div>
                                     <div class="col-xs-6">
                                         <asp:TextBox ID="tb_correo" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>

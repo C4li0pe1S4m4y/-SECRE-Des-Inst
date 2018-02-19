@@ -211,10 +211,31 @@ namespace secretaria.Dirigentes
 
         protected void btn_actualizar_comite_Click(object sender, EventArgs e)
         {
+            string Fecha_acuerdo = ""; string fehca_acreditacion = ""; string fehca_acta = ""; string fecha_finiquito = "";string fecha_tedefe = "";
+            if (string.IsNullOrEmpty(tb_fecha_acuerdo.Text))
+                Fecha_acuerdo = "null";
+            else
+                Fecha_acuerdo = "'" + tb_fecha_acuerdo.Text+ "'";
+            if (string.IsNullOrEmpty(tb_fecha_acreditacion.Text))
+                fehca_acreditacion = "null";
+            else
+                fehca_acreditacion = "'" + tb_fecha_acreditacion.Text + "'" ;
+            if (string.IsNullOrEmpty(tb_fecha_acta_tomap.Text))
+                fehca_acta = "null";
+            else
+                fehca_acta = "'" + tb_fecha_acta_tomap.Text + "'" ;
+            if (string.IsNullOrEmpty(tb_fecha_finiquito.Text))
+                fecha_finiquito = "null";
+            else
+                fecha_finiquito = "'" + tb_fecha_finiquito.Text + "'" ;
+            if (string.IsNullOrEmpty(tb_fecha_tedefe.Text))
+                fecha_tedefe = "null";
+            else
+                fecha_tedefe = "'" + tb_fecha_tedefe.Text + "'" ; 
             cDirigente cdir = new cDirigente();
-            cdir.ActualizarComite(new string[16] {  ddl_estado_comite.SelectedItem.Text, tb_periodo.Text, tb_fechainicio.Text, tb_fechafinal.Text, tb_acuerdo.Text, tb_fecha_acuerdo.Text,  tb_acreditacion.Text, tb_fecha_acreditacion.Text,
-                tb_acta_tomap.Text, tb_fecha_acta_tomap.Text, Session["Usuario"].ToString(), tb_finiquito.Text, tb_fecha_finiquito.Text,
-                      tb_no_tedefe.Text, tb_fecha_tedefe.Text, lbtn_cambiar.Attributes["idDir"]});
+            cdir.ActualizarComite(new string[16] {  ddl_estado_comite.SelectedItem.Text, tb_periodo.Text, tb_fechainicio.Text, tb_fechafinal.Text, tb_acuerdo.Text, Fecha_acuerdo,  tb_acreditacion.Text, fehca_acreditacion,
+                tb_acta_tomap.Text, fehca_acta, Session["Usuario"].ToString(), tb_finiquito.Text, fecha_finiquito,
+                      tb_no_tedefe.Text, fecha_tedefe, lbtn_cambiar.Attributes["idDir"]});
         }
 
         protected void btn_anterior_Click(object sender, EventArgs e)
