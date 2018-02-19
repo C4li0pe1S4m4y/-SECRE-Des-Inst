@@ -152,8 +152,7 @@ namespace secretaria.Dirigentes
             tb_apellidos.Text = "";
             tb_dpi.Text = "";
             ddl_dpto.SelectedIndex = 0;
-            tb_nit.Text = "";
-            
+            tb_nit.Text = "";            
             tb_correo.Text = "";
         }
 
