@@ -39,19 +39,35 @@
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
+                                <asp:RequiredFieldValidator id="RequiredFieldValidator3" runat="server"
+                                  ControlToValidate="fechaAsamblea"
+                                  ErrorMessage="Ingrese una fecha."
+                                  ForeColor="Red"
+                                  Font-Size="Small">
+                                </asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="row">
                             <div>
-                                <label for="tipoAsamblea">Tipo de Asamblea:</label>
+                                <label for="tipoAsamblea">Tipo de Asamblea:</label>                                
                             </div>
                             
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">                                    
-                                    <asp:DropDownList ID="ddlTipoAsamblea" CssClass="form-control input" runat="server"></asp:DropDownList>
-                                </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">                                    
+                                <asp:DropDownList ID="ddlTipoAsamblea" CssClass="form-control input" runat="server"></asp:DropDownList>
+                            </div>
                             
+                            
+                        </div>
+                        <div>
+                            <asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server"
+                                ControlToValidate="ddlTipoAsamblea"
+                                InitialValue="0"
+                                ErrorMessage="Ingrese un tipo de asamblea."
+                                ForeColor="Red"
+                                Font-Size="Small">
+                            </asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div>
@@ -61,6 +77,12 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
                                 <textarea class="form-control" rows="5" id="descripcion" runat="server"></textarea>
+                                <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
+                                  ControlToValidate="descripcion"
+                                  ErrorMessage="Ingrese una descripción."
+                                  ForeColor="Red"
+                                  Font-Size="Small">
+                                </asp:RequiredFieldValidator>
                             </div>
                         </div>
                     </div>

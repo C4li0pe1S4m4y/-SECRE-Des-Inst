@@ -11,3 +11,16 @@ D:\OTROS\CDAG\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.Common.d
 D:\OTROS\CDAG\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
 D:\OTROS\CDAG\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
 D:\OTROS\CDAG\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.WebForms.dll
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Controladores.dll.config
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Controladores.dll
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Controladores.pdb
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.Common.dll
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.WebForms.dll
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Modelos.dll
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\MySql.Data.dll
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Modelos.pdb
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\obj\Debug\Controladores.csprojResolveAssemblyReference.cache
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\obj\Debug\Controladores.dll
+D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\obj\Debug\Controladores.pdb

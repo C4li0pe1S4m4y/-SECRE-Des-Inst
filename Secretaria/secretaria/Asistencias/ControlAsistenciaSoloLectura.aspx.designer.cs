@@ -7,90 +7,81 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace secretaria.Asambleas {
+namespace secretaria.Asistencias {
     
     
-    public partial class IngresoAsamblea {
+    public partial class ControlAsistenciaSoloLectura {
         
         /// <summary>
-        /// Control fechaAsamblea.
+        /// Control lblId.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText fechaAsamblea;
+        protected global::System.Web.UI.WebControls.Label lblId;
         
         /// <summary>
-        /// Control RequiredFieldValidator3.
+        /// Control lblTotalAsistentes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.Label lblTotalAsistentes;
         
         /// <summary>
-        /// Control ddlTipoAsamblea.
+        /// Control lblTotalRetirados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoAsamblea;
+        protected global::System.Web.UI.WebControls.Label lblTotalRetirados;
         
         /// <summary>
-        /// Control RequiredFieldValidator2.
+        /// Control lblTotalFederados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.Label lblTotalFederados;
         
         /// <summary>
-        /// Control descripcion.
+        /// Control lblDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea descripcion;
+        protected global::System.Web.UI.WebControls.Label lblDescripcion;
         
         /// <summary>
-        /// Control RequiredFieldValidator1.
+        /// Control lblEstadoAsamblea2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.Label lblEstadoAsamblea2;
         
         /// <summary>
-        /// Control btnGuardar.
+        /// Control lblHora.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardar;
+        protected global::System.Web.UI.WebControls.Label lblHora;
         
         /// <summary>
-        /// Control btnCancelar.
+        /// Control gvListadoAsistencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
-        
-        /// <summary>
-        /// Control lblResultado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblResultado;
+        protected global::System.Web.UI.WebControls.GridView gvListadoAsistencia;
     }
 }

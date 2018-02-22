@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace secretaria.Asambleas
-{
-    public partial class ListadoAsambleas
-    {
-
+namespace secretaria.Asambleas {
+    
+    
+    public partial class ListadoAsambleas {
+        
         /// <summary>
         /// Control gvListadoA.
         /// </summary>

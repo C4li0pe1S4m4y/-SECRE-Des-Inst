@@ -17,8 +17,8 @@ using System.Text;
 
 namespace secretaria.Asistencias
 {
-    public partial class ControlAsistencia : System.Web.UI.Page
-    {       
+    public partial class ControlAsistenciaSoloLectura : System.Web.UI.Page
+    {
         cAsistencia contAsistencia;
         mAsistencia modelAsistencia;
 
@@ -41,14 +41,13 @@ namespace secretaria.Asistencias
             modelAsistencia = new mAsistencia();
             contAsistencia = new cAsistencia();
             int nom = Convert.ToInt16(Request.QueryString["numero"]);
-            
+
 
             try
             {
                 modelAsistencia.Estado = "Presente";
                 modelAsistencia.id_asamblea = Convert.ToInt16(Request.QueryString["numero"]);
-                modelAsistencia.id_tipo_asistencia = int.Parse(ddlTipoAsistencia.SelectedItem.Value);
-                modelAsistencia.idDirigente = int.Parse(ddlAsistente.SelectedItem.Value);
+                
 
                 contAsistencia.InsertarAsistencia(modelAsistencia);
                 actualizar();
@@ -160,8 +159,8 @@ namespace secretaria.Asistencias
             int nom = Convert.ToInt16(Request.QueryString["numero"]);
 
             modelAsamblea = contAsamblea.Obtner_Asamblea(nom);
-            if(modelAsamblea.estado==3 || modelAsamblea.estado==4)
-            e.Row.Cells[1].Visible = false;
+            if (modelAsamblea.estado == 3 || modelAsamblea.estado == 4)
+                e.Row.Cells[1].Visible = false;
             e.Row.Cells[0].Visible = false;
         }
 
@@ -210,31 +209,6 @@ namespace secretaria.Asistencias
 
         }
 
-        protected void ddlAsistenteOnSelectIndex(object sender, System.EventArgs e)
-        {
-            cAsistencia contAsistencia = new cAsistencia();
-            int idDirigente = int.Parse(ddlAsistente.SelectedItem.Value);
-            int nom = Convert.ToInt16(Request.QueryString["numero"]);
-            contAsistencia.DdlTipoAsistencia(ddlTipoAsistencia, nom, idDirigente);
-        }
-
-        protected void ddlFadnOnSelectIndex(object sender, System.EventArgs e)///////////////////
-        {
-            cFADN contFadn = new cFADN();
-            cDirigente contDirigente = new cDirigente();
-            int idFadn = int.Parse(ddlFadn.SelectedItem.Value);
-            int nom = Convert.ToInt16(Request.QueryString["numero"]);
-            DataTable dtDirigentes = contDirigente.dtDirigentes(nom, idFadn);
-            ddlAsistente.DataSource = dtDirigentes;
-            ddlAsistente.DataValueField = "idDirigente";
-            ddlAsistente.DataTextField = "dirigente";
-            ddlAsistente.DataBind();
-            ddlAsistente.Items.Insert(0, new ListItem("Seleccione Asistente", "Seleccione Asistente"));
-            ddlAsistente.SelectedItem.Text = "<< Asistente >>";
-            ddlAsistente.SelectedItem.Value = "0";
-
-        }
-
         protected void actualizar()
         {
             cAsistencia contAsistencia = new cAsistencia();
@@ -243,11 +217,11 @@ namespace secretaria.Asistencias
 
             mAsamblea modelAsamblea = new mAsamblea();
 
-       
+
             int nom = Convert.ToInt16(Request.QueryString["numero"]);
             int necQuorum = (contFADN.TotalFadn() / 2) + 1;
             modelAsamblea = contAsamblea.Obtner_Asamblea(nom);
-            int estadoAsamblea = modelAsamblea.estado;            
+            int estadoAsamblea = modelAsamblea.estado;
             gvListadoAsistencia.DataSource = contAsistencia.ListadoAsistencia(nom); gvListadoAsistencia.DataBind();
             lblTotalAsistentes.Text = Convert.ToString(contAsistencia.TotalAsistentes(nom)); lblTotalAsistentes.DataBind();
             lblTotalRetirados.Text = Convert.ToString(contAsistencia.TotalRetirados(nom)); lblTotalAsistentes.DataBind();
@@ -261,55 +235,37 @@ namespace secretaria.Asistencias
                 case 1:
                     if (contAsistencia.TotalFederados(nom) < necQuorum)
                     {
-                        
+
                         lblEstadoAsamblea2.Text = "Aún no se ha reunido el mínimo para iniciar la Asamblea."; lblEstadoAsamblea2.DataBind();
-                        btIniciarQuorum.Visible = false; btIniciarQuorum.DataBind();
-                        btIniciarQuorumF.Visible = true; btIniciarQuorumF.DataBind();
-                        btFinalizarQuorum2.Visible = false; btFinalizarQuorum2.DataBind();
+                        
                     }
                     else
                     {
-                        
+
                         lblEstadoAsamblea2.Text = "Ya es posible realizarse la Asamblea."; lblEstadoAsamblea2.DataBind();
-                        btIniciarQuorum.Visible = true; btIniciarQuorum.DataBind();
-                        btIniciarQuorumF.Visible = false; btIniciarQuorumF.DataBind();
-                        btFinalizarQuorum2.Visible = false; btFinalizarQuorum2.DataBind();
+                        
                     }
-                    btReporte.Visible = false; btReporte.DataBind();
+                    
                     break;
                 case 2:
-                    btIniciarQuorum.Visible = false; btIniciarQuorum.DataBind();
-                    btIniciarQuorumF.Visible = false; btIniciarQuorumF.DataBind();
-                    btFinalizarQuorum2.Visible = true; btFinalizarQuorum2.DataBind();
+                    
                     lblEstadoAsamblea2.Text = "La Asamblea se ha iniciado."; lblEstadoAsamblea2.DataBind();
-                    lblHora.Text = modelAsamblea.inicio; lblHora.DataBind();                    
-                    btReporte.Visible = false; btReporte.DataBind();
+                    lblHora.Text = modelAsamblea.inicio; lblHora.DataBind();
+                    
                     break;
                 case 3:
                     lblEstadoAsamblea2.Text = "El Quórum ne se pudo realizar. La asamblea finalizó."; lblEstadoAsamblea2.DataBind();
                     lblHora.Text = modelAsamblea.final; lblHora.DataBind();
-                    lblA.Visible = false; lblA.DataBind();
-                    lblTA.Visible = false; lblTA.DataBind();
-                    ddlAsistente.Visible = false; ddlAsistente.DataBind();
-                    ddlTipoAsistencia.Visible = false; ddlTipoAsistencia.DataBind();
-                    btnAgregar.Visible = false; btnAgregar.DataBind();
-                    btReporte.Visible = true; btReporte.DataBind();
-                    break;                    
+                    
+                    break;
                 case 4:
-                    btIniciarQuorum.Visible = false; btIniciarQuorum.DataBind();
-                    btIniciarQuorumF.Visible = false; btIniciarQuorumF.DataBind();
-                    btFinalizarQuorum2.Visible = false; btFinalizarQuorum2.DataBind();
+                    
                     lblEstadoAsamblea2.Text = "La Asamblea ha terminado."; lblEstadoAsamblea2.DataBind();
                     lblHora.Text = modelAsamblea.final; lblHora.DataBind();
-                    btReporte.Visible = true; btReporte.DataBind();
-                    lblA.Visible = false;
-                    lblTA.Visible = false;
-                    ddlAsistente.Visible = false;
-                    ddlTipoAsistencia.Visible = false;
-                    btnAgregar.Visible = false;
+                    
                     break;
             }
-            
+
             modelAsamblea = contAsamblea.Obtner_Asamblea(nom);
             lblDescripcion.Text = modelAsamblea.descripcion;
 
@@ -317,15 +273,7 @@ namespace secretaria.Asistencias
             cDirigente contDirigente = new cDirigente();
             mDiringente modelDirigente = new mDiringente();
             DataTable dtDirigentes = contDirigente.dtDirigentes(nom, 0);
-            ddlAsistente.DataSource = dtDirigentes;
-            ddlAsistente.DataValueField = "idDirigente";
-            ddlAsistente.DataTextField = "dirigente";
-            ddlAsistente.DataBind();
-            ddlAsistente.Items.Insert(0, new ListItem("Seleccione Asistente", "Seleccione Asistente"));
-            ddlAsistente.SelectedItem.Text = "<< Asistente >>";
-            ddlAsistente.SelectedItem.Value = "0";
-            contAsistencia.DdlTipoAsistencia(ddlTipoAsistencia, 0, 0);
-            contFadn.DdlFadn(ddlFadn);
+            
         }
     }
 }

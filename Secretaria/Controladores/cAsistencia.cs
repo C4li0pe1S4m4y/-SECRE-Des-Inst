@@ -38,7 +38,7 @@ namespace Controladores
             drop.ClearSelection();
             drop.Items.Clear();
             drop.AppendDataBoundItems = true;
-            drop.Items.Add("<< Elija un valor >>");
+            drop.Items.Add("<< Tipo de Asistencia >>");
             drop.Items[0].Value = "0";
             DataTable tabla = new DataTable();
             string query = String.Format("select id_tipo_asistencia, nombre "+

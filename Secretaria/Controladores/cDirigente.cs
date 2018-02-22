@@ -421,5 +421,32 @@ namespace Controladores
                 return false;
             };
         }
+
+        public DataTable dtDirigentes(int idAsamblea, int idFadn)
+        {
+            DataTable dtPresentes = new DataTable();
+            try
+            {
+                conectar = new cConexion();
+                conectar.AbrirConexion();
+                string query = string.Format("select d.idDirigente, CONCAT(d.Nombres, ' ', d.Apellidos, ' - ', ' (', t.descripcion, ')') as dirigente " +
+                    "from dbsecretaria.sg_fadn f " +
+                    "inner join dbsecretaria.sg_comite_ejecutivo c on f.id_fand = c.id_fadn " +
+                    "inner join dbsecretaria.sg_dirigente d on c.id_dirigente = d.idDirigente " +
+                    "inner join dbsecretaria.sg_tipo_dirigente t on d.Tipo_dirigente = t.idTipo_dirigente " +
+                    "where d.Estado = 'activo' and t.idTipo_dirigente in(1,4) and f.id_fand={1} " +
+                    "and d.idDirigente not in(select idDirigente from dbsecretaria.sg_asistencia where id_asamblea = {0})" +
+                    "order by dirigente;", idAsamblea, idFadn);
+                MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
+                consulta.Fill(dtPresentes);
+                conectar.CerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                throw;
+            };
+            return dtPresentes;
+        }
     }
 }
