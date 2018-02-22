@@ -81,17 +81,5 @@ namespace Controladores
             conectar.CerrarConexion();
             return dt;
         }
-
-        public Int16 TotalFadn()
-        {
-            Int16 t = new Int16();
-            conectar = new cConexion();
-            conectar.AbrirConexion();
-            string query = string.Format("SELECT COUNT(id_fand) FROM dbsecretaria.sg_fadn;");
-            MySqlCommand consulta = new MySqlCommand(query, conectar.conectar);
-            t = Convert.ToInt16(consulta.ExecuteScalar());
-            conectar.CerrarConexion();
-            return t;
-        }
     }
 }

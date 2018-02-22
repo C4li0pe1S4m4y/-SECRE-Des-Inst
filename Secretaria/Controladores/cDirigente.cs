@@ -7,7 +7,6 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Web.UI.WebControls;
 using Modelos;
-using System.Web.Services;
 
 namespace Controladores
 {
@@ -26,11 +25,7 @@ namespace Controladores
                 consulta.Fill(dt);
                 conectar.CerrarConexion();
             }
-            catch (Exception ex)
-            {
-                string error = ex.Message;
-                throw;
-            };
+            catch { return; };
             ddl.Items.Clear();
             ddl.AppendDataBoundItems = true;
             ddl.Items.Add("-- Seleccione uno --");
@@ -79,41 +74,9 @@ namespace Controladores
                 consulta.Fill(dt);
                 conectar.CerrarConexion();
             }
-            catch (Exception ex)
-            {
-                string error = ex.Message;
-                throw;
-            };
+            catch { };
             return dt;
         }
-
-        public DataTable dtDirigentes(int idAsamblea)
-        {
-            DataTable dtPresentes = new DataTable();
-            try
-            {
-                conectar = new cConexion();
-                conectar.AbrirConexion();
-                string query = string.Format("select d.idDirigente, CONCAT(d.Nombres, ' ', d.Apellidos, ' - ', ' (', f.nombre, ')') as dirigente " +
-                    "from dbsecretaria.sg_fadn f " +
-                    "inner join dbsecretaria.sg_comite_ejecutivo c on f.id_fand = c.id_fadn " +
-                    "inner join dbsecretaria.sg_dirigente d on c.id_dirigente = d.idDirigente " +
-                    "inner join dbsecretaria.sg_tipo_dirigente t on d.Tipo_dirigente = t.idTipo_dirigente " +
-                    "where d.Estado = 'activo' and t.idTipo_dirigente in(1,4) " +
-                    "and d.idDirigente not in(select idDirigente from dbsecretaria.sg_asistencia where id_asamblea = {0})" +
-                    "order by dirigente;", idAsamblea);
-                MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
-                consulta.Fill(dtPresentes);
-                conectar.CerrarConexion();
-            }
-            catch (Exception ex)
-            {
-                string error = ex.Message;
-                throw;
-            };
-            return dtPresentes;
-        }
-
 
         public void FillDeptos(DropDownList ddl)
         {
@@ -203,11 +166,7 @@ namespace Controladores
                 consulta.Fill(dt);
                 conectar.CerrarConexion();
             }
-            catch (Exception ex)
-            {
-                string error = ex.Message;
-                throw;
-            };
+            catch { };
             return dt;
         }
 
@@ -236,12 +195,8 @@ namespace Controladores
                 {
                     transaccion.Rollback();
                 }
-                
-                catch (Exception ex)
-                {
-                    string error = ex.Message;
-                    throw;
-                };
+                catch
+                { };
                 conectar.CerrarConexion();
                 return false;
             };
@@ -279,7 +234,7 @@ namespace Controladores
                 conectar = new cConexion();
                 conectar.AbrirConexion();
                 string query = string.Format("SELECT Nombres, Apellidos, DPI," +
-                    "DATE_FORMAT(Fecha_posesion, '%Y-%m-%d') as FP, DATE_FORMAT(Fecha_finalizacion, '%Y-%m-%d') as FF, NIT, correo_electronico, Lugar_Extendio"
+                    "NIT, correo_electronico, Lugar_Extendio"
                     + " FROM dbsecretaria.sg_dirigente WHERE idDirigente = {0};", idDir);
                 MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
                 consulta.Fill(dt);
@@ -290,10 +245,8 @@ namespace Controladores
                     datos_dirigente[0].Text = dr["Nombres"].ToString();
                     datos_dirigente[1].Text = dr["Apellidos"].ToString();
                     datos_dirigente[2].Text = dr["DPI"].ToString();
-                    datos_dirigente[3].Text = dr["FP"].ToString();
-                    datos_dirigente[4].Text = dr["FF"].ToString();
-                    datos_dirigente[5].Text = dr["NIT"].ToString();
-                    datos_dirigente[6].Text = dr["correo_electronico"].ToString();
+                    datos_dirigente[3].Text = dr["NIT"].ToString();
+                    datos_dirigente[4].Text = dr["correo_electronico"].ToString();
                     ddl.SelectedValue = ddl.Items.FindByText(dr["Lugar_extendio"].ToString()).Value;
                 }
             }
@@ -350,9 +303,8 @@ namespace Controladores
             try
             {
                 command.CommandText = string.Format("UPDATE dbsecretaria.sg_dirigente SET  Nombres = '{0}', Apellidos = '{1}', DPI = '{2}', Lugar_extendio = '{3}', NIT = '{4}',"+
-                "Fecha_posesion = '{5}', Fecha_finalizacion = '{6}', correo_electronico = '{7}', usuario_modifica = '{8}', Fecha_modifica = now() WHERE idDirigente = {9}; ",
-                datos_dirigente[0], datos_dirigente[1], datos_dirigente[2], datos_dirigente[3],datos_dirigente[4], datos_dirigente[5], datos_dirigente[6], datos_dirigente[7], 
-                datos_dirigente[8], datos_dirigente[9]);
+                " correo_electronico = '{5}', usuario_modifica = '{6}', Fecha_modifica = now() WHERE idDirigente = {7}; ",
+                datos_dirigente[0], datos_dirigente[1], datos_dirigente[2], datos_dirigente[3],datos_dirigente[4], datos_dirigente[5], datos_dirigente[6], datos_dirigente[7]);
                 command.ExecuteNonQuery();
                 transaccion.Commit();
                 conectar.CerrarConexion();
@@ -364,12 +316,8 @@ namespace Controladores
                 {
                     transaccion.Rollback();
                 }
-                
-                catch (Exception ex2)
-                {
-                    string error = ex2.Message;
-                    throw;
-                };
+                catch
+                { };
                 conectar.CerrarConexion();
                 return false;
             };
@@ -385,8 +333,8 @@ namespace Controladores
             try
             {
                 command.CommandText = string.Format("UPDATE `dbsecretaria`.`sg_comite_ejecutivo` SET Estado = '{0}', Periodo = {1}, Fecha_inicio = '{2}',Fecha_final = '{3}',Acuerdo_cej = '{4}'," +
-                "Fecha_acuerdo = '{5}',Acreditacion_cdag = '{6}',Fecha_Acreditacion = '{7}',acta_posesion = '{8}', fecha_posesion='{9}',Fecha_modifica = now() ,usuario_modifica = '{10}', " +
-                "no_finiquito = '{11}', fecha_finiquito = '{12}', no_tedefe = '{13}', fecha_tedefe = '{14}' WHERE id_dirigente = {15};"
+                "Fecha_acuerdo = {5},Acreditacion_cdag = '{6}',Fecha_Acreditacion = {7},acta_posesion = '{8}', fecha_posesion={9},Fecha_modifica = now() ,usuario_modifica = '{10}', " +
+                "no_finiquito = '{11}', fecha_finiquito = {12}, no_tedefe = '{13}', fecha_tedefe = {14} WHERE id_dirigente = {15};"
                 , datos_comite[0], datos_comite[1], datos_comite[2], datos_comite[3], datos_comite[4], datos_comite[5], datos_comite[6], datos_comite[7], datos_comite[8], 
                 datos_comite[9], datos_comite[10], datos_comite[11], datos_comite[12], datos_comite[13], datos_comite[14], datos_comite[15]);
                 command.ExecuteNonQuery();
@@ -400,12 +348,8 @@ namespace Controladores
                 {
                     transaccion.Rollback();
                 }
-                
-                catch (Exception ex2)
-                {
-                    string error = ex2.Message;
-                    throw;
-                };
+                catch
+                { };
                 conectar.CerrarConexion();
                 return false;
             };
@@ -443,12 +387,8 @@ namespace Controladores
                 {
                     transaccion.Rollback();
                 }
-                
-                catch (Exception ex2)
-                {
-                    string error = ex2.Message;
-                    throw;
-                };
+                catch
+                { };
                 conectar.CerrarConexion();
                 return false;
             };
@@ -475,11 +415,8 @@ namespace Controladores
                 {
                     transaccion.Rollback();
                 }
-                catch (Exception ex)
-                {
-                    string error = ex.Message;
-                    throw;
-                };
+                catch
+                { };
                 conectar.CerrarConexion();
                 return false;
             };
