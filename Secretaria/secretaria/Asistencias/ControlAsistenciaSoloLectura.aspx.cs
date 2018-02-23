@@ -26,6 +26,7 @@ namespace secretaria.Asistencias
         {
             if (!IsPostBack)
             {
+                gvListadoAsistencia.DataBind();
                 actualizar();
             }
         }
@@ -209,6 +210,12 @@ namespace secretaria.Asistencias
 
         }
 
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            actualizar();
+            //gvListadoAsistencia.DataBind();
+        }
+
         protected void actualizar()
         {
             cAsistencia contAsistencia = new cAsistencia();
@@ -222,7 +229,7 @@ namespace secretaria.Asistencias
             int necQuorum = (contFADN.TotalFadn() / 2) + 1;
             modelAsamblea = contAsamblea.Obtner_Asamblea(nom);
             int estadoAsamblea = modelAsamblea.estado;
-            gvListadoAsistencia.DataSource = contAsistencia.ListadoAsistencia(nom); gvListadoAsistencia.DataBind();
+            gvListadoAsistencia.DataSource = contAsistencia.ListadoAsistencia(nom, "ASC"); gvListadoAsistencia.DataBind();
             lblTotalAsistentes.Text = Convert.ToString(contAsistencia.TotalAsistentes(nom)); lblTotalAsistentes.DataBind();
             lblTotalRetirados.Text = Convert.ToString(contAsistencia.TotalRetirados(nom)); lblTotalAsistentes.DataBind();
             lblTotalFederados.Text = Convert.ToString(contAsistencia.TotalFederados(nom)); lblTotalFederados.DataBind();
@@ -236,13 +243,13 @@ namespace secretaria.Asistencias
                     if (contAsistencia.TotalFederados(nom) < necQuorum)
                     {
 
-                        lblEstadoAsamblea2.Text = "Aún no se ha reunido el mínimo para iniciar la Asamblea."; lblEstadoAsamblea2.DataBind();
+                        lblEstadoAsamblea2.Text = "No se ha iniciado la Asamblea."; lblEstadoAsamblea2.DataBind();
                         
                     }
                     else
                     {
 
-                        lblEstadoAsamblea2.Text = "Ya es posible realizarse la Asamblea."; lblEstadoAsamblea2.DataBind();
+                        lblEstadoAsamblea2.Text = "No se ha iniciado la Asamblea."; lblEstadoAsamblea2.DataBind();
                         
                     }
                     

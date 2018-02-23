@@ -36,6 +36,7 @@
         <div class="row"><h2><asp:Label ID="lblDescripcion" Text="" runat="server"></asp:Label></h2></div>
         <div class="row"><asp:Label ID="lblId" Text="" runat="server" style="display:none;"></asp:Label></div>
 
+
     <div class="form-group row">
         <div class="col-lg-7 col-md-7 col-sm-12">
             <div class="jumbotron">

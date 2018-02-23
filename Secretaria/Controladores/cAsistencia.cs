@@ -63,20 +63,37 @@ namespace Controladores
             drop.DataBind();
         }
 
-        public DataTable ListadoAsistencia(int id)
+        public DataTable ListadoAsistencia(int id, string orden)
         {
             conectar = new cConexion();
             DataTable dt = new DataTable();
             conectar.AbrirConexion();
-            string query = string.Format("SELECT a.id_asistencia numero, a.Estado, DATE_FORMAT(a.hora_entrada, '%H:%i') as 'entrada',DATE_FORMAT(a.hora_salida, '%H:%i') as 'salida',CONCAT(d.Nombres,' ',d.Apellidos) as 'nombreC',td.descripcion,ta.nombre as 'tipoA',f.nombre as 'federacion' " +
+            string query = "";
+            if(orden == "ASC")
+            {
+                query = string.Format("SELECT a.id_asistencia numero, a.Estado, DATE_FORMAT(a.hora_entrada, '%H:%i') as 'entrada',DATE_FORMAT(a.hora_salida, '%H:%i') as 'salida',CONCAT(d.Nombres,' ',d.Apellidos) as 'nombreC',td.descripcion,ta.nombre as 'tipoA',f.nombre as 'federacion' " +
                 "FROM dbsecretaria.sg_fadn f INNER JOIN dbsecretaria.sg_comite_ejecutivo c ON f.id_fand = c.id_fadn " +
                 "RIGHT JOIN dbsecretaria.sg_dirigente d ON c.id_dirigente = d.idDirigente " +
                 "LEFT JOIN dbsecretaria.sg_tipo_dirigente td ON d.Tipo_dirigente = td.idTipo_dirigente " +
                 "RIGHT JOIN dbsecretaria.sg_asistencia a ON d.idDirigente = a.idDirigente " +
                 "LEFT JOIN dbsecretaria.sg_tipo_asistencia ta ON a.id_tipo_asistencia = ta.id_tipo_asistencia " +
-                "INNER JOIN dbsecretaria.sg_asamblea asa ON a.id_asamblea = asa.id_asamblea "+
+                "INNER JOIN dbsecretaria.sg_asamblea asa ON a.id_asamblea = asa.id_asamblea " +
+                "WHERE asa.id_asamblea = {0} ORDER BY a.hora_entrada ASC;"
+                , id);
+            }
+            else
+            {
+                query = string.Format("SELECT a.id_asistencia numero, a.Estado, DATE_FORMAT(a.hora_entrada, '%H:%i') as 'entrada',DATE_FORMAT(a.hora_salida, '%H:%i') as 'salida',CONCAT(d.Nombres,' ',d.Apellidos) as 'nombreC',td.descripcion,ta.nombre as 'tipoA',f.nombre as 'federacion' " +
+                "FROM dbsecretaria.sg_fadn f INNER JOIN dbsecretaria.sg_comite_ejecutivo c ON f.id_fand = c.id_fadn " +
+                "RIGHT JOIN dbsecretaria.sg_dirigente d ON c.id_dirigente = d.idDirigente " +
+                "LEFT JOIN dbsecretaria.sg_tipo_dirigente td ON d.Tipo_dirigente = td.idTipo_dirigente " +
+                "RIGHT JOIN dbsecretaria.sg_asistencia a ON d.idDirigente = a.idDirigente " +
+                "LEFT JOIN dbsecretaria.sg_tipo_asistencia ta ON a.id_tipo_asistencia = ta.id_tipo_asistencia " +
+                "INNER JOIN dbsecretaria.sg_asamblea asa ON a.id_asamblea = asa.id_asamblea " +
                 "WHERE asa.id_asamblea = {0} ORDER BY a.hora_entrada DESC;"
                 , id);
+            }
+            
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
             consulta.Fill(dt);
             conectar.CerrarConexion();
