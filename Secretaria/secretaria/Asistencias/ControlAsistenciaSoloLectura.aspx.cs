@@ -155,13 +155,7 @@ namespace secretaria.Asistencias
 
         protected void opcionesAsistente_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            cAsamblea contAsamblea = new cAsamblea();
-            mAsamblea modelAsamblea = new mAsamblea();
-            int nom = Convert.ToInt16(Request.QueryString["numero"]);
-
-            modelAsamblea = contAsamblea.Obtner_Asamblea(nom);
-            if (modelAsamblea.estado == 3 || modelAsamblea.estado == 4)
-                e.Row.Cells[1].Visible = false;
+            
             e.Row.Cells[0].Visible = false;
         }
 

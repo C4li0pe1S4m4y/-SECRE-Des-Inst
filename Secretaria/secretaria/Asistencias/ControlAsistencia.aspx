@@ -44,13 +44,13 @@
                     <tr>
                         <td>
                             <div>
-                                <asp:label id="Label1" runat="server">FADN:</asp:label>
+                                <asp:label id="lblFadn" runat="server">FADN:</asp:label>
                             </div>
                             <div>
                                 <asp:DropDownList ID="ddlFadn" AutoPostBack="true" CssClass="form-control input" runat="server" Width="280px" OnSelectedIndexChanged="ddlFadnOnSelectIndex"></asp:DropDownList>
                             </div>
                             <div>
-                                <asp:RequiredFieldValidator id="RequiredFieldValidator3" runat="server"
+                                <asp:RequiredFieldValidator id="rfv1" runat="server"
                                     ControlToValidate="ddlFadn"
                                     InitialValue="0"
                                     ErrorMessage="Seleccione una federación."
@@ -67,7 +67,7 @@
                                 <asp:DropDownList ID="ddlAsistente" AutoPostBack="true" CssClass="form-control input" runat="server" Width="280px" OnSelectedIndexChanged="ddlAsistenteOnSelectIndex"></asp:DropDownList>
                             </div>  
                             <div>
-                                <asp:RequiredFieldValidator id="RequiredFieldValidator1" runat="server"
+                                <asp:RequiredFieldValidator id="rfv2" runat="server"
                                     ControlToValidate="ddlAsistente"
                                     InitialValue="0"
                                     ErrorMessage="Seleccione un dirigente."
@@ -86,7 +86,7 @@
                                 <asp:DropDownList ID="ddlTipoAsistencia" CssClass="form-control input" runat="server"></asp:DropDownList>
                             </div>
                             <div>
-                                <asp:RequiredFieldValidator id="RequiredFieldValidator2" runat="server"
+                                <asp:RequiredFieldValidator id="rfv3" runat="server"
                                     ControlToValidate="ddlTipoAsistencia"
                                     InitialValue="0"
                                     ErrorMessage="Seleccione el tipo de asistencia."

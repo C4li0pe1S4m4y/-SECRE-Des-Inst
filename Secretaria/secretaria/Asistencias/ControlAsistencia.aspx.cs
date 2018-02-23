@@ -302,10 +302,15 @@ namespace secretaria.Asistencias
                     lblEstadoAsamblea2.Text = "La Asamblea ha terminado."; lblEstadoAsamblea2.DataBind();
                     lblHora.Text = modelAsamblea.final; lblHora.DataBind();
                     btReporte.Visible = true; btReporte.DataBind();
+                    lblFadn.Visible = false;
                     lblA.Visible = false;
                     lblTA.Visible = false;
+                    ddlFadn.Visible = false;
                     ddlAsistente.Visible = false;
                     ddlTipoAsistencia.Visible = false;
+                    rfv1.Visible = false;
+                    rfv2.Visible = false;
+                    rfv3.Visible = false;
                     btnAgregar.Visible = false;
                     break;
             }

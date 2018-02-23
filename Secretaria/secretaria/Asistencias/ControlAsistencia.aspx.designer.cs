@@ -31,13 +31,13 @@ namespace secretaria.Asistencias {
         protected global::System.Web.UI.WebControls.Label lblId;
         
         /// <summary>
-        /// Control Label1.
+        /// Control lblFadn.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblFadn;
         
         /// <summary>
         /// Control ddlFadn.
@@ -49,13 +49,13 @@ namespace secretaria.Asistencias {
         protected global::System.Web.UI.WebControls.DropDownList ddlFadn;
         
         /// <summary>
-        /// Control RequiredFieldValidator3.
+        /// Control rfv1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv1;
         
         /// <summary>
         /// Control lblA.
@@ -76,13 +76,13 @@ namespace secretaria.Asistencias {
         protected global::System.Web.UI.WebControls.DropDownList ddlAsistente;
         
         /// <summary>
-        /// Control RequiredFieldValidator1.
+        /// Control rfv2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv2;
         
         /// <summary>
         /// Control lblTA.
@@ -103,13 +103,13 @@ namespace secretaria.Asistencias {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoAsistencia;
         
         /// <summary>
-        /// Control RequiredFieldValidator2.
+        /// Control rfv3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv3;
         
         /// <summary>
         /// Control btnAgregar.

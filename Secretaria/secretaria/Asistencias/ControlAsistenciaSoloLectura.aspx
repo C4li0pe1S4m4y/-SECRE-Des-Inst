@@ -160,13 +160,13 @@
                 <AlternatingRowStyle BackColor="#F0F0F0" />
                 <Columns>         
                     <asp:boundfield datafield="numero" headertext="idAsistencia"/>                
-                    <asp:boundfield datafield="Estado" headertext="Estado"><ItemStyle Width="5%"/> </asp:BoundField>            
-                    <asp:boundfield datafield="entrada" headertext="Entrada"><ItemStyle Width="5%"/> </asp:BoundField>
-                    <asp:boundfield datafield="salida" headertext="Salida"><ItemStyle Width="5%"/> </asp:BoundField>
-                    <asp:boundfield datafield="federacion" headertext="FADN"><ItemStyle Width="15%"/> </asp:BoundField>
-                    <asp:boundfield datafield="nombreC" headertext="Nombre Completo"><ItemStyle Width="20%"/> </asp:BoundField>
-                    <asp:boundfield datafield="descripcion" headertext="Cargo"><ItemStyle Width="5%"/> </asp:BoundField>
-                    <asp:boundfield datafield="tipoA" headertext="Tipo Asistencia"><ItemStyle Width="5%"/> </asp:BoundField>
+                    <asp:boundfield datafield="Estado" headertext="Estado"><ItemStyle Width="5%" Font-Size="X-Large"/> </asp:BoundField>            
+                    <asp:boundfield datafield="entrada" headertext="Entrada"><ItemStyle Width="5%" Font-Size="X-Large"/> </asp:BoundField>
+                    <asp:boundfield datafield="salida" headertext="Salida"><ItemStyle Width="5%" Font-Size="X-Large"/> </asp:BoundField>
+                    <asp:boundfield datafield="federacion" headertext="FADN"><ItemStyle Width="15%" Font-Size="X-Large"/> </asp:BoundField>
+                    <asp:boundfield datafield="nombreC" headertext="Nombre Completo"><ItemStyle Width="20%" Font-Size="X-Large"/> </asp:BoundField>
+                    <asp:boundfield datafield="descripcion" headertext="Cargo"><ItemStyle Width="5%" Font-Size="X-Large"/></asp:BoundField>
+                    <asp:boundfield datafield="tipoA" headertext="Tipo Asistencia"><ItemStyle Width="5%" Font-Size="X-Large"/> </asp:BoundField>
                 
                 </Columns>
                  <HeaderStyle BackColor="#0099FF" />
