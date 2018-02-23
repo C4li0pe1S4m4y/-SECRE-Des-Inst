@@ -88,7 +88,9 @@
 
     
         <div class="row"><asp:Label ID="lblId" Text="" runat="server" style="display:none;"></asp:Label></div>
-
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <ContentTemplate>
+    <asp:Timer ID="Timer1" runat="server" Interval="3600" ontick="Timer1_Tick"></asp:Timer>
     <div class="form-group row">
         <div class="col-lg-7 col-md-7 col-sm-12">
             <div class="jumbotron">
@@ -153,9 +155,7 @@
     </div>
 
     <div>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
-        <asp:Timer ID="Timer1" runat="server" Interval="3600" ontick="Timer1_Tick"></asp:Timer>
+        
             <asp:GridView ID="gvListadoAsistencia" runat="server" OnSelectedIndexChanged="gvListadoAsistencia_SelectedIndexChanged" AllowPaging="False" autogeneratecolumns="false" DataKeyNames="numero" CssClass="table table-hover table-responsive" onrowcommand="opcionesAsistente_RowCommand" OnRowDataBound="opcionesAsistente_RowDataBound">
                 <AlternatingRowStyle BackColor="#F0F0F0" />
                 <Columns>         
@@ -171,8 +171,9 @@
                 </Columns>
                  <HeaderStyle BackColor="#0099FF" />
             </asp:GridView>
-        </ContentTemplate>
-        </asp:UpdatePanel>
+        
     </div>
+    </ContentTemplate>
+    </asp:UpdatePanel>
 </div>
 </asp:Content>
