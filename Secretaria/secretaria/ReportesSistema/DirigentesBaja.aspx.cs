@@ -31,6 +31,21 @@ namespace secretaria.ReportesSistema
                 filtros[3] = "c.acta_posesion, c.fecha_posesion";
                 filtros[4] = "d.dpi";
                 filtros[5] = "d.nit";
+                MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
+                System.Data.DataSet thisDataSet = new System.Data.DataSet();
+                System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+                stringBuilder.Append(busqueda2());
+                thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, stringBuilder.ToString());
+                ReportDataSource datasource = new ReportDataSource("DataSet1", thisDataSet.Tables[0]);
+
+                ReportViewer1.LocalReport.DataSources.Clear();
+                ReportViewer1.LocalReport.DataSources.Add(datasource);
+                if (thisDataSet.Tables[0].Rows.Count == 0)
+                {
+
+                }
+
+                ReportViewer1.LocalReport.Refresh();
             }
         }
 
