@@ -44,20 +44,24 @@ namespace secretaria.ReportesSistema
             filtros[5] = "d.nit";
             MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(busqueda2());
             if (tb_fecha_inicio.Text != "" && tb_fecha_fin.Text != "")
             {
-                Todos[0] = new MySqlParameter("@fechaInicio", tb_fecha_inicio.Text);
-                Todos[1] = new MySqlParameter("@fechaFin", tb_fecha_fin.Text);
-                Todos[2] = new MySqlParameter("@fadn", ddl_fadn.SelectedValue);
-                thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(2), Todos);
+                
+                stringBuilder.Append(" and c.Fecha_inicio >= '" + tb_fecha_inicio.Text+ "' ");
+                stringBuilder.Append(" and c.Fecha_final <= '" + tb_fecha_fin.Text + "' ");
+                
+               
+                
             }
-            else
+            if (ddl_dirigente.SelectedIndex > 0)
             {
-                SearchValue[0] = new MySqlParameter("@fadn", ddl_fadn.SelectedValue);
-                thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(2), SearchValue);
+                stringBuilder.Append(" and t.descripcion =  '" + ddl_dirigente.SelectedValue + "' ");
             }
-      
-      
+            stringBuilder.Append(" and c.id_fadn = " + ddl_fadn.SelectedValue);
+            stringBuilder.Append(" ORDER BY f.nombre, d.Tipo_dirigente ");
+            thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, stringBuilder.ToString());
             ReportDataSource datasource = new ReportDataSource("DataSet1", thisDataSet.Tables[0]);
 
             ReportViewer1.LocalReport.DataSources.Clear();
@@ -70,64 +74,18 @@ namespace secretaria.ReportesSistema
             ReportViewer1.LocalReport.Refresh();
         }
 
-        public string busqueda(int op)
+        public string busqueda2()
         {
-            string query = "";
-            if (ddl_fadn.SelectedIndex > 0)
-            {
-                if (tb_fecha_inicio.Text != "" && tb_fecha_fin.Text != "")
-                {
-                            query = string.Format("SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres,d.estado, t.descripcion, c.Fecha_inicio," +
-                 " c.Fecha_final,{0}, {1},{2},{3},{4},{5}" +
-                 " FROM sg_comite_ejecutivo c INNER JOIN sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN " +
-                 "sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente" +
-                 " WHERE (c.Estado_Comite = 1) and c.id_fadn = @fadn and c.Fecha_inicio >= @fechaInicio and c.Fecha_final <= @fechaFin ORDER BY f.nombre, d.Tipo_dirigente" ,
-                 filtros[0], filtros[1], filtros[2], filtros[3],filtros[4],filtros[5]);
-
-                }
-                else
-                {
-                    query = string.Format("SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres,d.estado, t.descripcion, c.Fecha_inicio," +
-              " c.Fecha_final,{0}, {1},{2},{3},{4},{5}" +
-              " FROM sg_comite_ejecutivo c INNER JOIN sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN " +
-              "sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente" +
-              " WHERE (c.Estado_Comite = 1) and c.id_fadn = @fadn ORDER BY f.nombre, d.Tipo_dirigente", filtros[0], filtros[1], filtros[2], filtros[3],filtros[4],filtros[5]);
-
-                }
-
-            }
-            else if (tb_fecha_inicio.Text != "" && tb_fecha_fin.Text != "")
-            {
-                query = string.Format("SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres,d.estado, t.descripcion, c.Fecha_inicio," +
-             " c.Fecha_final,{0}, {1},{2},{3},{4},{5}" +
-             " FROM sg_comite_ejecutivo c INNER JOIN sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN " +
-             "sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente" +
-             " WHERE (c.Estado_Comite = 1) and c.Fecha_inicio >= @fechaInicio and c.Fecha_final <= @fechaFin  ORDER BY f.nombre, d.Tipo_dirigente", filtros[0], filtros[1], filtros[2], filtros[3],filtros[4],filtros[5]);
-
-            }
-            else if(ddl_dirigente.SelectedIndex >0 )
-            {
-                query = string.Format("SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres,d.estado ,t.descripcion, c.Fecha_inicio," +
-            " c.Fecha_final,{0}, {1},{2},{3},{4},{5}" +
-
-            " FROM sg_comite_ejecutivo c INNER JOIN sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN " +
-            "sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente" +
-            " WHERE (c.Estado_Comite = 1) and t.descripcion = @dirigente ORDER BY f.nombre, d.Tipo_dirigente", filtros[0], filtros[1], filtros[2], filtros[3],filtros[4],filtros[5]);
-
-            }
-            else
-            {
-                query = string.Format("SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres,d.estado, t.descripcion, c.Fecha_inicio," +
-           " c.Fecha_final,{0}, {1},{2},{3},{4},{5}" +
-
-           " FROM sg_comite_ejecutivo c INNER JOIN sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN " +
-           "sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente" +
-           " WHERE (c.Estado_Comite = 1) ORDER BY f.nombre, d.Tipo_dirigente", filtros[0], filtros[1], filtros[2], filtros[3],filtros[4],filtros[5]);
-
-            }
-
+            string query = string.Format("SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres,d.estado, t.descripcion, c.Fecha_inicio," +
+          " c.Fecha_final,{0}, {1},{2},{3},{4},{5}" +
+          " FROM sg_comite_ejecutivo c INNER JOIN sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN " +
+          "sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente" +
+          " WHERE (c.Estado_Comite = 1) ",
+          filtros[0], filtros[1], filtros[2], filtros[3], filtros[4], filtros[5]);
             return query;
         }
+
+        
 
         protected void btnBusqueda_Click(object sender, EventArgs e)
         {
@@ -139,24 +97,28 @@ namespace secretaria.ReportesSistema
             filtros[5] = "d.nit";
             MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
-            if (ddl_fadn.SelectedIndex>0)
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(busqueda2());
+            if (ddl_fadn.SelectedIndex > 0)
             {
-                Todos[0] = new MySqlParameter("@fechaInicio", tb_fecha_inicio.Text);
-                Todos[1] = new MySqlParameter("@fechaFin", tb_fecha_fin.Text);
-                Todos[2] = new MySqlParameter("@fadn", ddl_fadn.SelectedValue);
-                thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(2), Todos);
+                stringBuilder.Append(" and c.Fecha_inicio >= '" + tb_fecha_inicio.Text + "' ");
+                stringBuilder.Append(" and c.Fecha_final <= '" + tb_fecha_fin.Text + "' ");
+                stringBuilder.Append(" and c.id_fadn = " + ddl_fadn.SelectedValue);
+                
             }
             else
             {
-                Fechas[0] = new MySqlParameter("@fechaInicio", tb_fecha_inicio.Text);
-                Fechas[1] = new MySqlParameter("@fechaFin", tb_fecha_fin.Text);
-                thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(2), Fechas);
+                stringBuilder.Append(" and c.Fecha_inicio >= '" + tb_fecha_inicio.Text + "' ");
+                stringBuilder.Append(" and c.Fecha_final <= '" + tb_fecha_fin.Text + "' ");
+                
             }
-           
-          
-            /* Put the stored procedure result into a dataset */
-            
 
+
+            /* Put the stored procedure result into a dataset */
+
+            stringBuilder.Append(" ORDER BY c.id_fadn, d.Tipo_dirigente ");
+
+            thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, stringBuilder.ToString());
             ReportDataSource datasource = new ReportDataSource("DataSet1", thisDataSet.Tables[0]);
 
             ReportViewer1.LocalReport.DataSources.Clear();
@@ -199,37 +161,36 @@ namespace secretaria.ReportesSistema
 
             MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
-
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(busqueda2());
             /* Put the stored procedure result into a dataset */
-            if (ddl_fadn.SelectedIndex>0)
+            if (ddl_fadn.SelectedIndex > 0)
             {
                 if (tb_fecha_inicio.Text != "" && tb_fecha_fin.Text != "")
                 {
-                    Todos[0] = new MySqlParameter("@fechaInicio", tb_fecha_inicio.Text);
-                    Todos[1] = new MySqlParameter("@fechaFin", tb_fecha_fin.Text);
-                    Todos[2] = new MySqlParameter("@fadn", ddl_fadn.SelectedValue);
-                    thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(2), Todos);
+                    stringBuilder.Append(" and c.Fecha_inicio >= '" + tb_fecha_inicio.Text + "' ");
+                    stringBuilder.Append(" and c.Fecha_final <= '" + tb_fecha_fin.Text + "' ");
+                    stringBuilder.Append(" and c.id_fadn = " + ddl_fadn.SelectedValue);
+
                 }
                 else
                 {
-                    SearchValue[0] = new MySqlParameter("@fadn", ddl_fadn.SelectedValue);
-                    thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(2), SearchValue);
+                    stringBuilder.Append(" and c.id_fadn = " + ddl_fadn.SelectedValue);
+                    
                 }
 
             }
             else if (tb_fecha_inicio.Text != "" && tb_fecha_fin.Text != "")
             {
-                Fechas[0] = new MySqlParameter("@fechaInicio", tb_fecha_inicio.Text);
-                Fechas[1] = new MySqlParameter("@fechaFin", tb_fecha_fin.Text);
-                thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(2), Fechas);
+                stringBuilder.Append(" and c.Fecha_inicio >= '" + tb_fecha_inicio.Text + "' ");
+                stringBuilder.Append(" and c.Fecha_final <= '" + tb_fecha_fin.Text + "' ");
             }
-            else
-            {
-                thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(2));
-            }
-           
-            
+          
 
+
+            stringBuilder.Append(" ORDER BY c.id_fadn, d.Tipo_dirigente ");
+
+            thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, stringBuilder.ToString());
             ReportDataSource datasource = new ReportDataSource("DataSet1", thisDataSet.Tables[0]);
 
             ReportViewer1.LocalReport.DataSources.Clear();
@@ -254,10 +215,16 @@ namespace secretaria.ReportesSistema
             filtros[5] = "d.nit";
             MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
-            SearchValue[0] = new MySqlParameter("@dirigente", ddl_dirigente.SelectedValue);
-            thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(2),SearchValue);
-            thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, busqueda(1),
-              SearchValue);
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(busqueda2());
+            if (ddl_fadn.SelectedIndex > 0)
+            {
+                stringBuilder.Append(" and c.id_fadn = " + ddl_fadn.SelectedValue);
+            }
+            stringBuilder.Append(" and t.descripcion =  '" + ddl_dirigente.SelectedValue +"' ");
+            stringBuilder.Append(" ORDER BY c.id_fadn, d.Tipo_dirigente ");
+            
+            thisDataSet = MySqlHelper.ExecuteDataset(thisConnection, stringBuilder.ToString());
 
             ReportDataSource datasource = new ReportDataSource("DataSet1", thisDataSet.Tables[0]);
 
