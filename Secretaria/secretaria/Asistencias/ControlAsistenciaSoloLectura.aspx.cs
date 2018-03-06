@@ -157,6 +157,12 @@ namespace secretaria.Asistencias
         {
             
             e.Row.Cells[0].Visible = false;
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onmouseover"] = "javascript:SetMouseOver(this)";
+                e.Row.Attributes["onmouseout"] = "javascript:SetMouseOut(this)";
+            }
         }
 
         protected void opcionesAsistente_RowCommand(Object sender, GridViewCommandEventArgs e)

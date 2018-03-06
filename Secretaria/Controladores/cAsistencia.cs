@@ -105,7 +105,7 @@ namespace Controladores
             Int16 t = new Int16();
             conectar = new cConexion();
             conectar.AbrirConexion();
-            string query = string.Format("SELECT COUNT(id_asistencia) FROM dbsecretaria.sg_asistencia WHERE id_asamblea = {0} and Estado = 'Presente';", id);
+            string query = string.Format("SELECT COUNT(id_asistencia) FROM dbsecretaria.sg_asistencia WHERE id_asamblea = {0} AND id_tipo_asistencia = 1;", id);
             MySqlCommand consulta = new MySqlCommand(query, conectar.conectar);
             t = Convert.ToInt16(consulta.ExecuteScalar());
             conectar.CerrarConexion();
