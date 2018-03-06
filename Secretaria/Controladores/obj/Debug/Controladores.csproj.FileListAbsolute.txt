@@ -24,3 +24,16 @@ D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Mode
 D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\obj\Debug\Controladores.csprojResolveAssemblyReference.cache
 D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\obj\Debug\Controladores.dll
 D:\OTROS\CDAG\1 SISTEMAS\-SECRE-Des-Inst\Secretaria\Controladores\obj\Debug\Controladores.pdb
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Controladores.dll.config
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Controladores.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Controladores.pdb
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.Common.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Microsoft.ReportViewer.WebForms.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Modelos.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\MySql.Data.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\bin\Debug\Modelos.pdb
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\obj\Debug\Controladores.csprojResolveAssemblyReference.cache
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\obj\Debug\Controladores.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Controladores\obj\Debug\Controladores.pdb

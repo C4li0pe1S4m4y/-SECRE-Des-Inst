@@ -10,8 +10,8 @@ namespace Controladores
 {
     class cConexion
     {
-        //private String contenido = "server=localhost; database =dbcdagsipa;user=usr_cdag_sipa; password =5sr_cd1g_s3pa";
-        private String contenido = "server=localhost; database =dbsecretaria;user=root; password =123456"; //marvin
+        private String contenido = "server=localhost; database =dbcdagsipa;user=usr_cdag_sipa; password =5sr_cd1g_s3pa";
+        //private String contenido = "server=localhost; database =dbsecretaria;user=root; password =123456"; //marvin
         //private String contenido = "server=localhost; database =dbsecretaria;user=root; password =1234";
         public MySqlConnection conectar = new MySqlConnection();
         public MySqlDataAdapter adaptador = new MySqlDataAdapter();

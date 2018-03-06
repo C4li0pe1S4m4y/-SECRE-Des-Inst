@@ -3,3 +3,13 @@ C:\Users\user Dell\Documents\GitHub\SG\Secretaria\Modelos\bin\Release\Modelos.dl
 C:\Users\user Dell\Documents\GitHub\SG\Secretaria\Modelos\bin\Release\Modelos.pdb
 C:\Users\user Dell\Documents\GitHub\SG\Secretaria\Modelos\obj\Release\Modelos.dll
 C:\Users\user Dell\Documents\GitHub\SG\Secretaria\Modelos\obj\Release\Modelos.pdb
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Modelos.dll.config
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Modelos.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Modelos.pdb
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Microsoft.ReportViewer.Common.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Microsoft.ReportViewer.DataVisualization.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Microsoft.ReportViewer.WebForms.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\obj\Release\Modelos.csprojResolveAssemblyReference.cache
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\obj\Release\Modelos.dll
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\obj\Release\Modelos.pdb

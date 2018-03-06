@@ -18,9 +18,11 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
 
     <link href="~/Content/bootstrap.css" rel="stylesheet" media="screen" />
+
+
 </head>
 <body>
-    <form runat="server">
+        <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--Para obtener más información sobre cómo agrupar scripts en ScriptManager, consulte http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -40,6 +42,9 @@
                 <asp:ScriptReference Name="WebFormsBundle" />
                 <%--Scripts del sitio--%>
             </Scripts>
+
+            
+
         </asp:ScriptManager>
 
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -52,7 +57,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Secretaria</a>
+                    <a class="navbar-brand" runat="server" href="~/">Secretaria2</a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
@@ -66,7 +71,6 @@
                                     <asp:HyperLink ID="ingreso" runat="server" NavigateUrl="~/Usuarios/IngresoUsuario">Ingresar Usuario</asp:HyperLink></li>
                                 <li>
                                     <asp:HyperLink ID="listado" runat="server" NavigateUrl="~/Usuarios/ListadoUsuarios">Listado</asp:HyperLink></li>
-                 
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -77,6 +81,17 @@
                                 <li>
                                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/ReportesSistema/DirigentesBaja">Dirigentes de Baja</asp:HyperLink></li>
                                 <li><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/ReportesSistema/DirigentesCompletos">Dirigentes</asp:HyperLink></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Asambleas<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Asambleas/IngresoAsamblea">Ingresar Asamblea</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Asambleas/ListadoAsambleas">Listado</asp:HyperLink></li>
+                                
+                 
                             </ul>
                         </li>
                     </ul>
@@ -97,9 +112,11 @@
             </div>
         </div>
         <div class="container body-content">
+            <div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
+            </div>
+            <hr/>
             <footer>
                 <p>&copy; Todos los Derechos Reservados CDAG, Guatemala, <%: DateTime.Now.Year %>  </p>
             </footer>
