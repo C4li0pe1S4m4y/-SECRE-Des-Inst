@@ -8,58 +8,24 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-    <style>
-        .mylabel{
-            position: relative;
-            display: block;
-            width: 60px;
-            height: 30px;
-            margin-bottom: 15px;
+
+
+    <script type="text/javascript">
+        var oldgridcolor;
+        var oldfont;
+        function SetMouseOver(element){
+            oldgridcolor = element.style.backgroundColor;
+            oldfont = element.style.fontWeight;
+            element.style.backgroundColor = '#D5EEFF';
+            element.style.cursor = 'pointer';
+            //element.style.fontWeight = '700';
+        }
+        function SetMouseOut(element){
+            //element.style.fontWeight = oldfont;
+            element.style.backgroundColor = oldgridcolor;
+            element.style.textDecoration = 'none';            
         }
 
-        .mylabel input{
-            display: none;
-        }
-
-        .slidinggroove{
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background: #ababab;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .slidinggroove:after{
-            position: absolute;
-            content: "";
-            width: 28px;
-            height: 28px;
-            border-radius: 50px;
-            background: #fff;
-            top: 1px;
-            left: 1px;
-            transition: all 0.3s ease;
-        }
-
-        input:checked + .slidinggroove{
-            background: #5fcf80;
-        }
-
-        input:checked + .slidinggroove:after{
-            transform: translateX(30px);
-        }
-
-        .labelterm{
-            position: relative;
-            top: 5px;
-            margin-left: 65px;
-        }
-    </style>
-
-    <script type="text/javascript">        
         $(function () {
             var $ddl = $("select[name$=ddlAsistente]");
             $ddl.select2();            
@@ -156,7 +122,7 @@
 
     <div>
         
-            <asp:GridView ID="gvListadoAsistencia" runat="server" OnSelectedIndexChanged="gvListadoAsistencia_SelectedIndexChanged" AllowPaging="False" autogeneratecolumns="false" DataKeyNames="numero" CssClass="table table-hover table-responsive" onrowcommand="opcionesAsistente_RowCommand" OnRowDataBound="opcionesAsistente_RowDataBound">
+            <asp:GridView ID="gvListadoAsistencia" runat="server" OnSelectedIndexChanged="gvListadoAsistencia_SelectedIndexChanged" AllowPaging="False" autogeneratecolumns="false" DataKeyNames="numero" CssClass="table table-responsive" onrowcommand="opcionesAsistente_RowCommand" OnRowDataBound="opcionesAsistente_RowDataBound">
                 <AlternatingRowStyle BackColor="#F0F0F0" />
                 <Columns>         
                     <asp:boundfield datafield="numero" headertext="idAsistencia"/>                
