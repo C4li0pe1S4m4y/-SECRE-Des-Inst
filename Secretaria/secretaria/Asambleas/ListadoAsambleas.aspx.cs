@@ -25,7 +25,7 @@ namespace secretaria.Asambleas
         protected void gvListadoA_SelectedIndexChanged(object sender, EventArgs e)
         {
             ViewState["numero"] = gvListadoA.SelectedValue;
-            Response.Redirect("/Asistencias/ControlAsistencia.aspx?numero=" + Convert.ToString(ViewState["numero"]));
+            Response.Redirect("~/Asistencias/ControlAsistencia.aspx?numero=" + Convert.ToString(ViewState["numero"]));
         }
 
         protected void opcionesAsamblea_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -44,7 +44,7 @@ namespace secretaria.Asambleas
                 TableCell idAsamblea = selectedRow.Cells[0];
                 Int16 Asamblea = Convert.ToInt16(idAsamblea.Text);
 
-                Response.Redirect("/Asistencias/ControlAsistencia.aspx?numero=" + Asamblea);
+                Response.Redirect("~/Asistencias/ControlAsistencia.aspx?numero=" + Asamblea);
             }
 
             if (e.CommandName == "Listado")
@@ -53,7 +53,7 @@ namespace secretaria.Asambleas
                 GridViewRow selectedRow = gvListadoA.Rows[index];
                 TableCell idAsamblea = selectedRow.Cells[0];
                 Int16 Asamblea = Convert.ToInt16(idAsamblea.Text);
-                Response.Redirect("/Asistencias/ControlAsistenciaSoloLectura.aspx?numero=" + Asamblea);
+                Response.Redirect("~/Asistencias/ControlAsistenciaSoloLectura.aspx?numero=" + Asamblea);
             }
         }
 

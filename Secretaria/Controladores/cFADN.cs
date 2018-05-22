@@ -19,7 +19,7 @@ namespace Controladores
             conectar = new cConexion();
             DataTable dt = new DataTable();
             conectar.AbrirConexion();
-            string query = string.Format("select id_fand as numero, Nombre,Direccion,Telefono,correo_electronico as Correo,Logo from dbsecretaria.sg_fadn; ");
+            string query = string.Format("select id_fand as numero, Nombre,Direccion,Telefono,correo_electronico as Correo from dbsecretaria.sg_fadn; ");
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
             consulta.Fill(dt);
             conectar.CerrarConexion();
@@ -30,7 +30,7 @@ namespace Controladores
         {   
             mFadn objFand = new mFadn();
             conectar = new cConexion();
-            string permiso = string.Format(" select id_fand,Nombre,Direccion,Telefono,correo_electronico as Correo,Logo from dbsecretaria.sg_fadn where id_fand = {0}; "
+            string permiso = string.Format(" select id_fand,Nombre,Direccion,Telefono,correo_electronico as Correo from dbsecretaria.sg_fadn where id_fand = {0}; "
             , id);
 
 
@@ -45,10 +45,7 @@ namespace Controladores
                 objFand.Direccion = dr.GetString("Direccion");
                 objFand.Telefono = dr.GetString("Telefono");
                 objFand.correo_electronico = dr.GetString("Correo");
-                if (!string.IsNullOrEmpty (dr.GetValue(5).ToString()))
-                {
-                    objFand.logo = (byte[])dr.GetValue(5);
-                }
+                
                 
             }
             return objFand;

@@ -39,7 +39,7 @@ namespace secretaria.Asambleas
                 lblResultado.Visible = true;
                 lblResultado.ForeColor = Color.LightGreen;
                 lblResultado.Text = "Datos Guardados Con Exito";
-                Response.Redirect("ListadoAsambleas.aspx");
+                Response.Redirect("~/ListadoAsambleas.aspx");
             }
             catch (Exception ex)
             {

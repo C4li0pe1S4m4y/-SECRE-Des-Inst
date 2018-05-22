@@ -2,9 +2,11 @@
 <xs:schema id="DirigentesActivos" targetNamespace="http://tempuri.org/DirigentesActivos.xsd" xmlns:mstns="http://tempuri.org/DirigentesActivos.xsd" xmlns="http://tempuri.org/DirigentesActivos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbsecretariaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbsecretariaConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbsecretariaConnectionString.ConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbsecretariaConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbsecretariaConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbsecretariaConnectionString1.ConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dbcdagsipaConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbcdagsipaConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dbcdagsipaConnectionString.ConnectionString" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
@@ -13,7 +15,7 @@
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres, d.Estado, t.descripcion, c.Fecha_inicio, c.Fecha_final, c.Acuerdo_cej, c.Fecha_acuerdo, c.Acreditacion_cdag, c.Fecha_Acreditacion, c.no_finiquito, c.fecha_finiquito, c.acta_posesion, 
-                  c.fecha_posesion, c.fecha_recepcion, d.DPI, d.NIT
+                  c.fecha_posesion, c.no_tedefe AS tedefe, c.fecha_tedefe AS fecha_ted, d.DPI, d.NIT, c.Estado AS estado_c
 FROM     sg_comite_ejecutivo c INNER JOIN
                   sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN
                   sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN
@@ -37,12 +39,14 @@ ORDER BY f.nombre, d.Tipo_dirigente</CommandText>
               <Mapping SourceColumn="fecha_finiquito" DataSetColumn="fecha_finiquito" />
               <Mapping SourceColumn="acta_posesion" DataSetColumn="acta_posesion" />
               <Mapping SourceColumn="fecha_posesion" DataSetColumn="fecha_posesion" />
-              <Mapping SourceColumn="fecha_recepcion" DataSetColumn="fecha_recepcion" />
               <Mapping SourceColumn="Nombres1" DataSetColumn="Nombres1" />
               <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
               <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
               <Mapping SourceColumn="DPI" DataSetColumn="DPI" />
               <Mapping SourceColumn="NIT" DataSetColumn="NIT" />
+              <Mapping SourceColumn="tedefe" DataSetColumn="tedefe" />
+              <Mapping SourceColumn="fecha_ted" DataSetColumn="fecha_ted" />
+              <Mapping SourceColumn="estado_c" DataSetColumn="estado_c" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -54,7 +58,7 @@ ORDER BY f.nombre, d.Tipo_dirigente</CommandText>
   <xs:element name="DirigentesActivos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DirigentesActivos" msprop:Generator_UserDSName="DirigentesActivos">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre">
@@ -105,7 +109,6 @@ ORDER BY f.nombre, d.Tipo_dirigente</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="fecha_posesion" msprop:Generator_ColumnVarNameInTable="columnfecha_posesion" msprop:Generator_ColumnPropNameInRow="fecha_posesion" msprop:Generator_ColumnPropNameInTable="fecha_posesionColumn" msprop:Generator_UserColumnName="fecha_posesion" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="fecha_recepcion" msprop:Generator_ColumnVarNameInTable="columnfecha_recepcion" msprop:Generator_ColumnPropNameInRow="fecha_recepcion" msprop:Generator_ColumnPropNameInTable="fecha_recepcionColumn" msprop:Generator_UserColumnName="fecha_recepcion" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Nombres1" msprop:Generator_ColumnVarNameInTable="columnNombres1" msprop:Generator_ColumnPropNameInRow="Nombres1" msprop:Generator_ColumnPropNameInTable="Nombres1Column" msprop:Generator_UserColumnName="Nombres1">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -135,6 +138,21 @@ ORDER BY f.nombre, d.Tipo_dirigente</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="NIT" msprop:Generator_ColumnVarNameInTable="columnNIT" msprop:Generator_ColumnPropNameInRow="NIT" msprop:Generator_ColumnPropNameInTable="NITColumn" msprop:Generator_UserColumnName="NIT" type="xs:int" />
+              <xs:element name="tedefe" msprop:Generator_ColumnVarNameInTable="columntedefe" msprop:Generator_ColumnPropNameInRow="tedefe" msprop:Generator_ColumnPropNameInTable="tedefeColumn" msprop:Generator_UserColumnName="tedefe" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fecha_ted" msprop:Generator_ColumnVarNameInTable="columnfecha_ted" msprop:Generator_ColumnPropNameInRow="fecha_ted" msprop:Generator_ColumnPropNameInTable="fecha_tedColumn" msprop:Generator_UserColumnName="fecha_ted" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="estado_c" msprop:Generator_ColumnVarNameInTable="columnestado_c" msprop:Generator_ColumnPropNameInRow="estado_c" msprop:Generator_ColumnPropNameInTable="estado_cColumn" msprop:Generator_UserColumnName="estado_c">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

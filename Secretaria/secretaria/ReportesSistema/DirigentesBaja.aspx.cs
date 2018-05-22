@@ -17,7 +17,7 @@ namespace secretaria.ReportesSistema
         public MySqlParameter[] SearchValue = new MySqlParameter[1];
         public MySqlParameter[] Fechas = new MySqlParameter[2];
         public MySqlParameter[] Todos = new MySqlParameter[3];
-        string[] filtros = new string[6];
+        string[] filtros = new string[7];
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -25,12 +25,13 @@ namespace secretaria.ReportesSistema
                 cDirigente cd = new cDirigente();
                 cd.Fill_FadnDDL(ddl_fadn);
                 cd.Fill_ddlDirigente(ddl_dirigente);
-                filtros[0] = "c.Acuerdo_cej, c.Fecha_acuerdo";
-                filtros[1] = "c.Acreditacion_cdag, c.Fecha_Acreditacion";
-                filtros[2] = "c.no_finiquito, c.fecha_finiquito";
-                filtros[3] = "c.acta_posesion, c.fecha_posesion";
+                filtros[0] = "c.Acuerdo_cej,date_format( c.Fecha_acuerdo,'%d/%m/%Y') fecha_acuerdo";
+                filtros[1] = "c.Acreditacion_cdag, date_format( c.Fecha_Acreditacion,'%d/%m/%Y') Fecha_Acreditacion";
+                filtros[2] = "c.no_finiquito,  date_format( c.Fecha_finiquito,'%d/%m/%Y') Fecha_finiquito";
+                filtros[3] = "c.acta_posesion, date_format( c.Fecha_posesion,'%d/%m/%Y') Fecha_posesion";
                 filtros[4] = "d.dpi";
                 filtros[5] = "d.nit";
+                filtros[6] = "c.no_tedefe AS tedefe,  date_format( c.Fecha_tedefe,'%d/%m/%Y')  AS fecha_ted";
                 MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
                 System.Data.DataSet thisDataSet = new System.Data.DataSet();
                 System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
@@ -51,12 +52,13 @@ namespace secretaria.ReportesSistema
 
         protected void ddl_fadn_SelectedIndexChanged(object sender, EventArgs e)
         {
-            filtros[0] = "c.Acuerdo_cej, c.Fecha_acuerdo";
-            filtros[1] = "c.Acreditacion_cdag, c.Fecha_Acreditacion";
-            filtros[2] = "c.no_finiquito, c.fecha_finiquito";
-            filtros[3] = "c.acta_posesion, c.fecha_posesion";
+            filtros[0] = "c.Acuerdo_cej,date_format( c.Fecha_acuerdo,'%d/%m/%Y') fecha_acuerdo";
+            filtros[1] = "c.Acreditacion_cdag, date_format( c.Fecha_Acreditacion,'%d/%m/%Y') Fecha_Acreditacion";
+            filtros[2] = "c.no_finiquito,  date_format( c.Fecha_finiquito,'%d/%m/%Y') Fecha_finiquito";
+            filtros[3] = "c.acta_posesion, date_format( c.Fecha_posesion,'%d/%m/%Y') Fecha_posesion";
             filtros[4] = "d.dpi";
             filtros[5] = "d.nit";
+            filtros[6] = "c.no_tedefe AS tedefe,  date_format( c.Fecha_tedefe,'%d/%m/%Y')  AS fecha_ted";
             MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
             System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
@@ -91,12 +93,12 @@ namespace secretaria.ReportesSistema
 
         public string busqueda2()
         {
-            string query = string.Format("SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres,d.estado, t.descripcion, c.Fecha_inicio," +
-          " c.Fecha_final,{0}, {1},{2},{3},{4},{5}" +
-          " FROM sg_comite_ejecutivo c INNER JOIN sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN " +
-          "sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente" +
-          " WHERE (c.Estado_Comite = 0) ",
-          filtros[0], filtros[1], filtros[2], filtros[3], filtros[4], filtros[5]);
+            string query = string.Format("SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres,d.estado, t.descripcion, date_format( c.Fecha_inicio,'%d/%m/%Y') fecha_inicio," +
+         "  date_format( c.Fecha_final,'%d/%m/%Y') fecha_final,{0}, {1},{2},{3},{4},{5},{6},c.Estado AS estado_c" +
+         " FROM sg_comite_ejecutivo c INNER JOIN sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN " +
+         "sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente" +
+         " WHERE (c.Estado_Comite = 0) ",
+         filtros[0], filtros[1], filtros[2], filtros[3], filtros[4], filtros[5],filtros[6]);
             return query;
         }
 
@@ -104,12 +106,13 @@ namespace secretaria.ReportesSistema
 
         protected void btnBusqueda_Click(object sender, EventArgs e)
         {
-            filtros[0] = "c.Acuerdo_cej, c.Fecha_acuerdo";
-            filtros[1] = "c.Acreditacion_cdag, c.Fecha_Acreditacion";
-            filtros[2] = "c.no_finiquito, c.fecha_finiquito";
-            filtros[3] = "c.acta_posesion, c.fecha_posesion";
+            filtros[0] = "c.Acuerdo_cej,date_format( c.Fecha_acuerdo,'%d/%m/%Y') fecha_acuerdo";
+            filtros[1] = "c.Acreditacion_cdag, date_format( c.Fecha_Acreditacion,'%d/%m/%Y') Fecha_Acreditacion";
+            filtros[2] = "c.no_finiquito,  date_format( c.Fecha_finiquito,'%d/%m/%Y') Fecha_finiquito";
+            filtros[3] = "c.acta_posesion, date_format( c.Fecha_posesion,'%d/%m/%Y') Fecha_posesion";
             filtros[4] = "d.dpi";
             filtros[5] = "d.nit";
+            filtros[6] = "c.no_tedefe AS tedefe,  date_format( c.Fecha_tedefe,'%d/%m/%Y')  AS fecha_ted";
             MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
             System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
@@ -150,19 +153,19 @@ namespace secretaria.ReportesSistema
         protected void cblFiltros_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cblFiltros.Items[0].Selected == true)
-                filtros[0] = "c.Acuerdo_cej, c.Fecha_acuerdo";
+                filtros[0] = "c.Acuerdo_cej,date_format( c.Fecha_acuerdo,'%d/%m/%Y') fecha_acuerdo";
             else
                 filtros[0] = "'null' Acuerdo_cej, 'null' Fecha_acuerdo";
             if (cblFiltros.Items[1].Selected == true)
-                filtros[1] = "c.Acreditacion_cdag, c.Fecha_Acreditacion";
+                filtros[1] = "c.Acreditacion_cdag, date_format( c.Fecha_Acreditacion,'%d/%m/%Y') Fecha_Acreditacion";
             else
                 filtros[1] = "'null' Acreditacion_cdag, 'null' Fecha_Acreditacion";
             if (cblFiltros.Items[2].Selected == true)
-                filtros[2] = "c.no_finiquito, c.fecha_finiquito";
+                filtros[2] = "c.no_finiquito,  date_format( c.Fecha_finiquito,'%d/%m/%Y') Fecha_finiquito";
             else
                 filtros[2] = "'null' no_finiquito, 'null' fecha_finiquito";
             if (cblFiltros.Items[3].Selected == true)
-                filtros[3] = "c.acta_posesion, c.fecha_posesion";
+                filtros[3] = "c.acta_posesion, date_format( c.Fecha_posesion,'%d/%m/%Y') Fecha_posesion";
             else
                 filtros[3] = "'null' acta_posesion, 'null' fecha_posesion";
             if (cblFiltros.Items[4].Selected == true)
@@ -173,6 +176,10 @@ namespace secretaria.ReportesSistema
                 filtros[5] = "d.nit";
             else
                 filtros[5] = "0 nit";
+            if (cblFiltros.Items[6].Selected == true)
+                filtros[6] = "c.no_tedefe AS tedefe,  date_format( c.Fecha_tedefe,'%d/%m/%Y')  AS fecha_ted";
+            else
+                filtros[6] = "'null' tedefe, 'null' fecha_ted";
 
             MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
@@ -222,12 +229,13 @@ namespace secretaria.ReportesSistema
 
         protected void ddl_dirigente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            filtros[0] = "c.Acuerdo_cej, c.Fecha_acuerdo";
-            filtros[1] = "c.Acreditacion_cdag, c.Fecha_Acreditacion";
-            filtros[2] = "c.no_finiquito, c.fecha_finiquito";
-            filtros[3] = "c.acta_posesion, c.fecha_posesion";
+            filtros[0] = "c.Acuerdo_cej,date_format( c.Fecha_acuerdo,'%d/%m/%Y') fecha_acuerdo";
+            filtros[1] = "c.Acreditacion_cdag, date_format( c.Fecha_Acreditacion,'%d/%m/%Y') Fecha_Acreditacion";
+            filtros[2] = "c.no_finiquito,  date_format( c.Fecha_finiquito,'%d/%m/%Y') Fecha_finiquito";
+            filtros[3] = "c.acta_posesion, date_format( c.Fecha_posesion,'%d/%m/%Y') Fecha_posesion";
             filtros[4] = "d.dpi";
             filtros[5] = "d.nit";
+            filtros[6] = "c.no_tedefe AS tedefe,  date_format( c.Fecha_tedefe,'%d/%m/%Y')  AS fecha_ted";
             MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
             System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();

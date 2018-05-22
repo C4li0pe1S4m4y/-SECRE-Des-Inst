@@ -160,8 +160,11 @@ namespace secretaria.Asistencias
 
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onmouseover"] = "javascript:SetMouseOver(this)";
-                e.Row.Attributes["onmouseout"] = "javascript:SetMouseOut(this)";
+                //e.Row.Attributes["onmouseover"] = "javascript:SetMouseOver(this)";
+                //e.Row.Attributes["onmouseout"] = "javascript:SetMouseOut(this)";
+
+                e.Row.Attributes["onmouseover"] = "this.style.backgroundColor='#D5EEFF';";
+                e.Row.Attributes["onmouseout"] = "this.style.backgroundColor='inherit';";                
             }
         }
 
@@ -229,7 +232,19 @@ namespace secretaria.Asistencias
             int necQuorum = (contFADN.TotalFadn() / 2) + 1;
             modelAsamblea = contAsamblea.Obtner_Asamblea(nom);
             int estadoAsamblea = modelAsamblea.estado;
-            gvListadoAsistencia.DataSource = contAsistencia.ListadoAsistencia(nom, "ASC"); gvListadoAsistencia.DataBind();
+
+            gvListadoAsistencia.DataSource = contAsistencia.ListadoAsistencia(nom, "ASC");
+            int totalListado = gvListadoAsistencia.Rows.Count;
+            int totalAsistentes = 0;
+            if (lblTotalAsistentes.Text != "") totalAsistentes = int.Parse(lblTotalAsistentes.Text);
+
+            if (totalAsistentes!=totalListado)
+            {
+                gvListadoAsistencia.DataBind();
+            }
+            //gvListadoAsistencia.DataBind();
+
+
             lblTotalAsistentes.Text = Convert.ToString(contAsistencia.TotalAsistentes(nom)); lblTotalAsistentes.DataBind();
             lblTotalRetirados.Text = Convert.ToString(contAsistencia.TotalRetirados(nom)); lblTotalAsistentes.DataBind();
             lblTotalFederados.Text = Convert.ToString(contAsistencia.TotalFederados(nom)); lblTotalFederados.DataBind();

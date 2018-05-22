@@ -303,8 +303,6 @@ namespace secretaria.Reportes {
             
             private global::System.Data.DataColumn columnfecha_posesion;
             
-            private global::System.Data.DataColumn columnfecha_recepcion;
-            
             private global::System.Data.DataColumn columnNombres1;
             
             private global::System.Data.DataColumn columndescripcion;
@@ -314,6 +312,12 @@ namespace secretaria.Reportes {
             private global::System.Data.DataColumn columnDPI;
             
             private global::System.Data.DataColumn columnNIT;
+            
+            private global::System.Data.DataColumn columntedefe;
+            
+            private global::System.Data.DataColumn columnfecha_ted;
+            
+            private global::System.Data.DataColumn columnestado_c;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -446,14 +450,6 @@ namespace secretaria.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn fecha_recepcionColumn {
-                get {
-                    return this.columnfecha_recepcion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn Nombres1Column {
                 get {
                     return this.columnNombres1;
@@ -489,6 +485,30 @@ namespace secretaria.Reportes {
             public global::System.Data.DataColumn NITColumn {
                 get {
                     return this.columnNIT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn tedefeColumn {
+                get {
+                    return this.columntedefe;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fecha_tedColumn {
+                get {
+                    return this.columnfecha_ted;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn estado_cColumn {
+                get {
+                    return this.columnestado_c;
                 }
             }
             
@@ -542,12 +562,14 @@ namespace secretaria.Reportes {
                         System.DateTime fecha_finiquito, 
                         string acta_posesion, 
                         System.DateTime fecha_posesion, 
-                        System.DateTime fecha_recepcion, 
                         string Nombres1, 
                         string descripcion, 
                         string Estado, 
                         string DPI, 
-                        int NIT) {
+                        int NIT, 
+                        string tedefe, 
+                        System.DateTime fecha_ted, 
+                        string estado_c) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nombre,
@@ -562,12 +584,14 @@ namespace secretaria.Reportes {
                         fecha_finiquito,
                         acta_posesion,
                         fecha_posesion,
-                        fecha_recepcion,
                         Nombres1,
                         descripcion,
                         Estado,
                         DPI,
-                        NIT};
+                        NIT,
+                        tedefe,
+                        fecha_ted,
+                        estado_c};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -602,12 +626,14 @@ namespace secretaria.Reportes {
                 this.columnfecha_finiquito = base.Columns["fecha_finiquito"];
                 this.columnacta_posesion = base.Columns["acta_posesion"];
                 this.columnfecha_posesion = base.Columns["fecha_posesion"];
-                this.columnfecha_recepcion = base.Columns["fecha_recepcion"];
                 this.columnNombres1 = base.Columns["Nombres1"];
                 this.columndescripcion = base.Columns["descripcion"];
                 this.columnEstado = base.Columns["Estado"];
                 this.columnDPI = base.Columns["DPI"];
                 this.columnNIT = base.Columns["NIT"];
+                this.columntedefe = base.Columns["tedefe"];
+                this.columnfecha_ted = base.Columns["fecha_ted"];
+                this.columnestado_c = base.Columns["estado_c"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -637,8 +663,6 @@ namespace secretaria.Reportes {
                 base.Columns.Add(this.columnacta_posesion);
                 this.columnfecha_posesion = new global::System.Data.DataColumn("fecha_posesion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfecha_posesion);
-                this.columnfecha_recepcion = new global::System.Data.DataColumn("fecha_recepcion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnfecha_recepcion);
                 this.columnNombres1 = new global::System.Data.DataColumn("Nombres1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNombres1);
                 this.columndescripcion = new global::System.Data.DataColumn("descripcion", typeof(string), null, global::System.Data.MappingType.Element);
@@ -649,6 +673,12 @@ namespace secretaria.Reportes {
                 base.Columns.Add(this.columnDPI);
                 this.columnNIT = new global::System.Data.DataColumn("NIT", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNIT);
+                this.columntedefe = new global::System.Data.DataColumn("tedefe", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntedefe);
+                this.columnfecha_ted = new global::System.Data.DataColumn("fecha_ted", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecha_ted);
+                this.columnestado_c = new global::System.Data.DataColumn("estado_c", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnestado_c);
                 this.columnnombre.AllowDBNull = false;
                 this.columnnombre.MaxLength = 45;
                 this.columnNombres.AllowDBNull = false;
@@ -668,6 +698,9 @@ namespace secretaria.Reportes {
                 this.columnDPI.AllowDBNull = false;
                 this.columnDPI.MaxLength = 45;
                 this.columnNIT.AllowDBNull = false;
+                this.columntedefe.MaxLength = 45;
+                this.columnestado_c.AllowDBNull = false;
+                this.columnestado_c.MaxLength = 45;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -982,22 +1015,6 @@ namespace secretaria.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime fecha_recepcion {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableDataTable1.fecha_recepcionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'fecha_recepcion\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.fecha_recepcionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Nombres1 {
                 get {
                     return ((string)(this[this.tableDataTable1.Nombres1Column]));
@@ -1048,6 +1065,49 @@ namespace secretaria.Reportes {
                 }
                 set {
                     this[this.tableDataTable1.NITColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string tedefe {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.tedefeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tedefe\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.tedefeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fecha_ted {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDataTable1.fecha_tedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fecha_ted\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.fecha_tedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string estado_c {
+                get {
+                    return ((string)(this[this.tableDataTable1.estado_cColumn]));
+                }
+                set {
+                    this[this.tableDataTable1.estado_cColumn] = value;
                 }
             }
             
@@ -1149,14 +1209,26 @@ namespace secretaria.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isfecha_recepcionNull() {
-                return this.IsNull(this.tableDataTable1.fecha_recepcionColumn);
+            public bool IstedefeNull() {
+                return this.IsNull(this.tableDataTable1.tedefeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setfecha_recepcionNull() {
-                this[this.tableDataTable1.fecha_recepcionColumn] = global::System.Convert.DBNull;
+            public void SettedefeNull() {
+                this[this.tableDataTable1.tedefeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfecha_tedNull() {
+                return this.IsNull(this.tableDataTable1.fecha_tedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfecha_tedNull() {
+                this[this.tableDataTable1.fecha_tedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1331,12 +1403,14 @@ namespace secretaria.Reportes.DirigentesActivosTableAdapters {
             tableMapping.ColumnMappings.Add("fecha_finiquito", "fecha_finiquito");
             tableMapping.ColumnMappings.Add("acta_posesion", "acta_posesion");
             tableMapping.ColumnMappings.Add("fecha_posesion", "fecha_posesion");
-            tableMapping.ColumnMappings.Add("fecha_recepcion", "fecha_recepcion");
             tableMapping.ColumnMappings.Add("Nombres1", "Nombres1");
             tableMapping.ColumnMappings.Add("descripcion", "descripcion");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
             tableMapping.ColumnMappings.Add("DPI", "DPI");
             tableMapping.ColumnMappings.Add("NIT", "NIT");
+            tableMapping.ColumnMappings.Add("tedefe", "tedefe");
+            tableMapping.ColumnMappings.Add("fecha_ted", "fecha_ted");
+            tableMapping.ColumnMappings.Add("estado_c", "estado_c");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1354,7 +1428,7 @@ namespace secretaria.Reportes.DirigentesActivosTableAdapters {
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT f.nombre, d.Nombres, d.Apellidos AS Nombres, d.Estado, t.descripcion, c.Fecha_inicio, c.Fecha_final, c.Acuerdo_cej, c.Fecha_acuerdo, c.Acreditacion_cdag, c.Fecha_Acreditacion, c.no_finiquito, c.fecha_finiquito, c.acta_posesion, 
-                  c.fecha_posesion, c.fecha_recepcion, d.DPI, d.NIT
+                  c.fecha_posesion, c.no_tedefe AS tedefe, c.fecha_tedefe AS fecha_ted, d.DPI, d.NIT, c.Estado AS estado_c
 FROM     sg_comite_ejecutivo c INNER JOIN
                   sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN
                   sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN

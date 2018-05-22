@@ -35,6 +35,7 @@
                     <asp:ListItem Selected="True" Value="4">Acta de Posesión</asp:ListItem>
                     <asp:ListItem Selected="True" Value="5">DPI</asp:ListItem>
                     <asp:ListItem Selected="True" Value="6">NIT</asp:ListItem>
+                    <asp:ListItem Selected="True" Value="7">TEDEFE</asp:ListItem>
                 </asp:CheckBoxList>
             </div>
         </div>
