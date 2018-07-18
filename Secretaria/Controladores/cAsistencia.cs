@@ -1,11 +1,7 @@
 ﻿using Modelos;
 using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
 namespace Controladores
@@ -71,7 +67,7 @@ namespace Controladores
             string query = "";
             if(orden == "ASC")
             {
-                query = string.Format("SELECT a.id_asistencia numero, a.Estado, DATE_FORMAT(a.hora_entrada, '%H:%i') as 'entrada',DATE_FORMAT(a.hora_salida, '%H:%i') as 'salida',CONCAT(d.Nombres,' ',d.Apellidos) as 'nombreC',td.descripcion,ta.nombre as 'tipoA',f.nombre as 'federacion' " +
+                query = string.Format("SELECT a.id_asistencia numero, a.Estado, DATE_FORMAT(a.hora_entrada, '%H:%i') as 'entrada',DATE_FORMAT(a.hora_salida, '%H:%i') as 'salida',CONCAT(d.Nombres,' ',d.Apellidos) as 'nombreC',td.descripcion,ta.nombre as 'tipoA',f.nombre as 'federacion', a.Lectura " +
                 "FROM dbsecretaria.sg_fadn f INNER JOIN dbsecretaria.sg_comite_ejecutivo c ON f.id_fand = c.id_fadn " +
                 "RIGHT JOIN dbsecretaria.sg_dirigente d ON c.id_dirigente = d.idDirigente " +
                 "LEFT JOIN dbsecretaria.sg_tipo_dirigente td ON d.Tipo_dirigente = td.idTipo_dirigente " +
@@ -178,6 +174,45 @@ namespace Controladores
             {
                 MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
                 consulta.Fill(dt);            
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                throw;
+            }
+            conectar.CerrarConexion();
+        }
+
+        public void ActualizarLectura(int id, string estado)
+        {
+            conectar = new cConexion();
+            DataTable dt = new DataTable();
+            conectar.AbrirConexion();
+
+            string query = "";
+
+            switch (estado)
+            {
+                case "1":
+                    query = string.Format(
+                    "UPDATE dbsecretaria.sg_asistencia set " +
+                    "lectura = '2' WHERE lectura='1'; " +
+
+                    "UPDATE dbsecretaria.sg_asistencia set " +
+                    "lectura = '{1}' WHERE id_asistencia={0}", id, estado);
+                    break;
+
+                case "2":
+                case "0":
+                    query = string.Format("UPDATE dbsecretaria.sg_asistencia set " +
+                    "lectura = '{1}' WHERE id_asistencia={0}", id, estado);
+                    break;
+            }
+
+            try
+            {
+                MySqlDataAdapter consulta = new MySqlDataAdapter(query, conectar.conectar);
+                consulta.Fill(dt);
             }
             catch (Exception ex)
             {

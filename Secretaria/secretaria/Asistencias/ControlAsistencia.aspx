@@ -38,7 +38,8 @@
                 <asp:Label ID="lblDescripcion" Text="" runat="server"></asp:Label></h2>
         </div>
         <div class="row">
-            <asp:Label ID="lblId" Text="" runat="server" Style="display: none;"></asp:Label></div>
+            <asp:Label ID="lblId" Text="" runat="server" Style="display: none;"></asp:Label>
+        </div>
 
         <asp:UpdatePanel ID="uPanel" runat="server">
             <ContentTemplate>
@@ -218,6 +219,9 @@
                     </asp:GridView>
                 </div>
             </ContentTemplate>
+            <Triggers>
+                <asp:PostBackTrigger ControlID="btReporte" />
+            </Triggers>
         </asp:UpdatePanel>
     </div>
 </asp:Content>

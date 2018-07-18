@@ -10,6 +10,8 @@ C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Relea
 C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Microsoft.ReportViewer.DataVisualization.dll
 C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.dll
 C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\bin\Release\Microsoft.ReportViewer.WebForms.dll
-C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\obj\Release\Modelos.csprojResolveAssemblyReference.cache
 C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\obj\Release\Modelos.dll
 C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\obj\Release\Modelos.pdb
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\obj\Release\Modelos.csprojAssemblyReference.cache
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\obj\Release\Modelos.csproj.CoreCompileInputs.cache
+C:\Users\user Dell\Documents\GitHub\-SECRE-Des-Inst\Secretaria\Modelos\obj\Release\Modelos.csproj.CopyComplete

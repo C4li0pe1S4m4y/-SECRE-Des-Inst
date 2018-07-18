@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Control de Asistencia" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ControlAsistenciaSoloLectura.aspx.cs" Inherits="secretaria.Asistencias.ControlAsistenciaSoloLectura" %>
+﻿<%@ Page Title="Control de Asistencia" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ControlAsistenciaSoloLectura.aspx.cs" Inherits="secretaria.Asistencias.ControlAsistenciaSoloLectura" EnableEventValidation="false" %>
 
 
 
@@ -51,13 +51,12 @@
 
     <!-- <meta http-equiv="refresh" content="5" /> -->
     <div class="form-group">
-
-
         <div class="row">
-            <asp:Label ID="lblId" Text="" runat="server" Style="display: none;"></asp:Label></div>
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <asp:Label ID="lblId" Text="" runat="server" Style="display: none;"></asp:Label>
+        </div>
+        <asp:UpdatePanel ID="upTimer" runat="server">
             <ContentTemplate>
-                <asp:Timer ID="Timer1" runat="server" Interval="600" OnTick="Timer1_Tick"></asp:Timer>
+                <asp:Timer ID="Timer1" runat="server" Interval="1600" OnTick="Timer1_Tick"></asp:Timer>
                 <div class="form-group row">
                     <div class="col-lg-7 col-md-7 col-sm-12">
                         <div class="jumbotron">
@@ -127,12 +126,16 @@
                     </div>
                 </div>
 
-                <div>
 
-                    <asp:GridView ID="gvListadoAsistencia" runat="server" 
-                        OnSelectedIndexChanged="gvListadoAsistencia_SelectedIndexChanged" AutoGenerateColumns="false" 
-                        DataKeyNames="numero" CssClass="table table-responsive" OnRowCommand="opcionesAsistente_RowCommand" 
-                        OnRowDataBound="opcionesAsistente_RowDataBound" >
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <div>
+                    <asp:GridView ID="gvListadoAsistencia" runat="server"
+                        OnSelectedIndexChanged="gvListadoAsistencia_SelectedIndexChanged" AutoGenerateColumns="false"
+                        DataKeyNames="numero" CssClass="table table-responsive" OnRowDataBound="opcionesAsistente_RowDataBound">
                         <AlternatingRowStyle BackColor="#F0F0F0" />
                         <Columns>
                             <asp:BoundField DataField="numero" HeaderText="idAsistencia" />
@@ -157,11 +160,13 @@
                             <asp:BoundField DataField="tipoA" HeaderText="Tipo Asistencia">
                                 <ItemStyle Width="5%" Font-Size="X-Large" />
                             </asp:BoundField>
+                            <asp:BoundField DataField="Lectura" HeaderText="Lectura">
+                                <ItemStyle Width="5%" Font-Size="X-Large" />
+                            </asp:BoundField>
 
                         </Columns>
                         <HeaderStyle BackColor="#0099FF" />
                     </asp:GridView>
-
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>

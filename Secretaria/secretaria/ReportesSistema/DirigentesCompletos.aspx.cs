@@ -97,8 +97,8 @@ namespace secretaria.ReportesSistema
           "  date_format( c.Fecha_final,'%d/%m/%Y') fecha_final,{0}, {1},{2},{3},{4},{5},{6},c.Estado AS estado_c" +
           " FROM sg_comite_ejecutivo c INNER JOIN sg_dirigente d ON c.id_dirigente = d.idDirigente INNER JOIN " +
           "sg_fadn f ON f.id_fand = c.id_fadn INNER JOIN sg_tipo_dirigente t ON t.idTipo_dirigente = d.Tipo_dirigente" +
-          " WHERE (c.Estado_Comite => 0) ",
-          filtros[0], filtros[1], filtros[2], filtros[3], filtros[4], filtros[5],filtros[6]);
+          " WHERE (c.Estado_Comite >= 0) ",
+          filtros[0], filtros[1], filtros[2], filtros[3], filtros[4], filtros[5], filtros[6]);
             return query;
         }
 
@@ -180,6 +180,7 @@ namespace secretaria.ReportesSistema
                 filtros[6] = "c.no_tedefe AS tedefe,  date_format( c.Fecha_tedefe,'%d/%m/%Y')  AS fecha_ted";
             else
                 filtros[6] = "'null' tedefe, 'null' fecha_ted";
+
             MySqlConnection thisConnection = new MySqlConnection(thisConnectionString);
             System.Data.DataSet thisDataSet = new System.Data.DataSet();
             System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
